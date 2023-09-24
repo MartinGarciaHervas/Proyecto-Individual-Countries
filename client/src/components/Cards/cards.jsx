@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux'
+import style from './cards.module.css'
 
 import Card from '../Card/card';
 
-export default function Cards() {
+export default function Cards({countries}) {
 
-    const countries = useSelector(state => state.countries);
 
     return (
         <>
-            <div>
+            <div className={style.cards}>
                 {countries?.map(country =>
                     <Card
                         name={country.name}

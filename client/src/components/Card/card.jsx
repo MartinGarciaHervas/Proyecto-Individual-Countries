@@ -1,14 +1,16 @@
 import { NavLink } from 'react-router-dom'
+import style from './card.module.css'
 
 export default function Card({ continent, flag, name, id }) {
 
+
     return (
         <>
-            <div>
-                <h1>{name}</h1>
-                <h2>Continent: {continent}</h2>
+            <div className={style.card}>
+                <h1 className={style.name}>{name}</h1>
+                <h2 className={style.continent}>Continent: {continent}</h2>
                 <NavLink to={`/detail/${id}`} >
-                    <img src={flag} alt={name} />
+                    <img className={style.img} src={flag} alt={name} />
                 </NavLink>
             </div>
         </>

@@ -1,4 +1,4 @@
-import { ADD_ALL_COUNTRIES, GET_COUNTRY_BY_ID } from "./actionsTypes";
+import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, GET_COUNTRY_BY_ID } from "./actionsTypes";
 import axios from 'axios'
 
 export const addAllCountries =  ()=>{
@@ -26,5 +26,11 @@ export const getCountryById = (id)=>{
         } catch (error) {
             console.log(error.message);
         }
+    }
+}
+
+export const clearDetail = ()=>{
+    return {
+        type: CLEAR_DETAIL,
     }
 }

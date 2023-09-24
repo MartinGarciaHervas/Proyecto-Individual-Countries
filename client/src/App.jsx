@@ -10,7 +10,7 @@ import Detail from './views/detail/detail'
 import ActivityForm from './views/form/activityForm'
 
 //Estilos
-import './App.css'
+import style from './App.module.css'
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className={style.app}>
         <Routes>
           <Route path='/' element={<Landing/>} />
           <Route path='/home' element={<Home/>} />

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {useParams} from 'react-router-dom'
-import { getCountryById } from "../../Redux/Actions/actions";
+import {NavLink, useParams} from 'react-router-dom'
+import { clearDetail, getCountryById } from "../../Redux/Actions/actions";
 
 
 export default function Detail(){
@@ -12,7 +12,11 @@ export default function Detail(){
 
 
     useEffect(()=>{
+        //Cuando se monta Detail, ejecuta la action que busca el Country y lo guarda en el Estado
         dispatch(getCountryById(id))
+
+        //Al momento de desmontarse, limpia el estado
+        return ()=>{dispatch(clearDetail())}
     },[])
 
     return (
@@ -26,6 +30,9 @@ export default function Detail(){
             <h2>Area: {detail?.pais?.area}</h2>
             <h2>Population: {detail?.pais?.population}</h2>
             <h3>ID: {detail?.pais?.id}</h3>
+            <NavLink to={'/home'}>
+            <button>HOME</button>
+            </NavLink>
         </div>
         </>
     )
