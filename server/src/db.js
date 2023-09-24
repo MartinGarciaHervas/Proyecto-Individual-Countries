@@ -3,7 +3,8 @@ const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 //Importo Los Modelos
-const CountryModel = require('./models/Country')
+const CountryModel = require('./models/Country');
+const ActivityModel = require('./models/Activity');
 
 
 const sequelize = new Sequelize(
@@ -13,12 +14,14 @@ const sequelize = new Sequelize(
 
 //Ejecuto la funcion de cada modelo
 CountryModel(sequelize);
+ActivityModel(sequelize);
 
 //Relaciono los modelos
 
-const { Country } = sequelize.models;
+const { Country, Activity } = sequelize.models;
 
-
+Country.belongsToMany(Activity, {through: 'country_activities'})
+Activity.belongsToMany(Country, {through: 'country_activities'})
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -1,6 +1,8 @@
 const {Country} = require('../db');
 const axios = require('axios')
 
+
+//Esta Funcino trae toda la informacion de la api, y la mapea devolviendo solo la info que esta en mi modelo
 const getDataFromApi = async ()=>{
     try {
         const {data} = await axios('http://localhost:5000/countries');
@@ -21,6 +23,8 @@ const getDataFromApi = async ()=>{
     }
 }
 
+
+//Esta funcion usa la informacion que obtengo en la anterior, y la agrega a mi base de datos
 const postAllCountries = async (data) => {
     try {
         await Country.bulkCreate(data);
@@ -29,13 +33,13 @@ const postAllCountries = async (data) => {
     }
 }
 
-const postCountries = async (req, res) => {
+//Esta es la funcion que ejecuta las dos anteriores, y es la que maneja los errores
+const postCountries = async () => {
     try {
         const data = await getDataFromApi();
         await postAllCountries(data);
-        res.status(200).json('Paises almacenados con exito!!');
     } catch (error) {
-        res.status(500).json({error: error.message})
+        console.log(error);
     }
 }
 

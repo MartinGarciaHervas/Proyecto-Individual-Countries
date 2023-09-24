@@ -4,12 +4,17 @@ const { sequelize } = require('./src/db.js');
 const postCountries = require("./src/Controllers/postAllCountries");
 const PORT = 3001;
 
-postCountries().then(()=>{
 
-  server.listen(PORT, () => {
-    sequelize.sync({ force: true })
-    console.log(`Server raised in port: ${PORT}`);
-  })
-}).catch(error=>{
-  console.log(error.message);
-})
+const startServer = async () => {
+  try {
+    await sequelize.sync({ force: true }); // Espera a que la DB se actualice
+    server.listen(PORT, () => {
+      console.log(`Server raised in port: ${PORT}`);
+    });
+    await postCountries()
+  } catch (error) {
+    console.error('Error starting server:', error);
+  }
+};
+
+startServer();
