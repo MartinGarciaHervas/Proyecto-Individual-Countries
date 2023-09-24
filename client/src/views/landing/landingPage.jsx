@@ -1,10 +1,12 @@
-
+import {NavLink} from 'react-router-dom'
 
 export default function Landing() {
     return (
         <>
             <div>
-                <p>Landing Page</p>
+                <NavLink to={'/home'}>
+                <button>Home</button>
+                </NavLink>
             </div>
         </>
     )
