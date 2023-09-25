@@ -8,8 +8,11 @@ const postActivity = async(req, res)=>{
         const newActivity = await Activity.create({ name: name, difficulty: difficulty, duration: duration, season: season })
 
         //Asocio la acitivity con el CountryId que me pasan por Body
-        const country = await Country.findByPk(CountryId);
-        await newActivity.addCountry(country);
+        //Como una actividad puede estar asociada a muchos paises, vienen dentro de un array los id's de los paises, por lo que mediante un for each, hago una asociacion por cada id
+        CountryId.forEach(async(element) => {
+            const country = await Country.findByPk(element);
+            await newActivity.addCountry(country);
+        });
 
         res.status(200).json('Activity creada con Exito!!')
 
