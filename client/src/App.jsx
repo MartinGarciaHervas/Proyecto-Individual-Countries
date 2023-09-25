@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addAllCountries } from './Redux/Actions/actions'
 
 //Views
@@ -16,7 +16,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(addAllCountries())
   }, [])
 
@@ -24,10 +24,10 @@ function App() {
     <>
       <div className={style.app}>
         <Routes>
-          <Route path='/' element={<Landing/>} />
-          <Route path='/home' element={<Home/>} />
-          <Route path='/detail/:id' element={<Detail/>}/>
-          <Route path='/form' element={<ActivityForm/>}/>
+          <Route path='/' element={<Landing />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/detail/:id' element={<Detail />} />
+          <Route path='/form' element={<ActivityForm />} />
         </Routes>
       </div>
     </>

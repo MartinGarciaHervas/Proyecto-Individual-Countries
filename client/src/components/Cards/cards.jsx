@@ -3,7 +3,7 @@ import style from './cards.module.css'
 
 import Card from '../Card/card';
 
-export default function Cards({countries}) {
+export default function Cards({ countries }) {
 
     return (
         <>

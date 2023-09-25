@@ -1,32 +1,32 @@
 import { useState } from "react"
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addAllCountries, getCountryByName } from "../../Redux/Actions/actions";
 
 
-export default function SearchBar (){
+export default function SearchBar() {
 
     const dispatch = useDispatch()
 
-    const [country, setCountry] =useState('');
+    const [country, setCountry] = useState('');
 
-    function changeHandler (event){
+    function changeHandler(event) {
         setCountry(event.target.value)
     }
 
-    function clickHandler (){
+    function clickHandler() {
         dispatch(getCountryByName(country))
         setCountry('')
     }
 
-    function clearHandler (){
+    function clearHandler() {
         dispatch(addAllCountries())
     }
 
-    return(
+    return (
         <>
-        <input onChange={changeHandler} value={country} type="search" placeholder="Search name"/>
-        <button onClick={clickHandler}>Search</button>
-        <button onClick={clearHandler}>Clear</button>
+            <input onChange={changeHandler} value={country} type="search" placeholder="Search name" />
+            <button onClick={clickHandler}>Search</button>
+            <button onClick={clearHandler}>Clear</button>
         </>
     )
 }

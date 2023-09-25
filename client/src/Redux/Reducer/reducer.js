@@ -1,13 +1,13 @@
 import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME } from '../Actions/actionsTypes'
 
-let intialState={
+let intialState = {
     allCountries: [],
     countries: [],
     detail: []
 }
 
-function rootReducer(state=intialState, action){
-    switch (action.type){
+function rootReducer(state = intialState, action) {
+    switch (action.type) {
         case ADD_ALL_COUNTRIES:
             return {
                 ...state,
