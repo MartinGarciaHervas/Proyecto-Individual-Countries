@@ -5,7 +5,6 @@ import Card from '../Card/card';
 
 export default function Cards({countries}) {
 
-
     return (
         <>
             <div className={style.cards}>

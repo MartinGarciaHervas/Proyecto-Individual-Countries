@@ -1,6 +1,7 @@
-import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, GET_COUNTRY_BY_ID } from '../Actions/actionsTypes'
+import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME } from '../Actions/actionsTypes'
 
 let intialState={
+    allCountries: [],
     countries: [],
     detail: []
 }
@@ -10,7 +11,8 @@ function rootReducer(state=intialState, action){
         case ADD_ALL_COUNTRIES:
             return {
                 ...state,
-                countries: action.payload
+                countries: action.payload,
+                allCountries: action.payload
             }
 
         case GET_COUNTRY_BY_ID:
@@ -23,6 +25,12 @@ function rootReducer(state=intialState, action){
             return {
                 ...state,
                 detail: []
+            }
+
+        case GET_COUNTRY_BY_NAME:
+            return {
+                ...state,
+                countries: action.payload
             }
     }
 }

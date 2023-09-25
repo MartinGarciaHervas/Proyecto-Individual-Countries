@@ -1,16 +1,18 @@
 .card {
     padding-bottom: 1.25em;
-    background-color: rgba(27, 135, 0, 0.3);
+    background-color: rgba(84, 84, 84, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
+    width: 19em;
+    margin: 20px 20px 0px 20px;
 }
 
 .img {
-    padding-top: 3.125em;
     width: 18.75em;
     height: 9.375em;
     margin: 0;
+    border-radius: 20px;
 }
 
 .name {
@@ -21,4 +23,5 @@
 .continent {
     font-size: 1.4em;
     padding-top: 1.25em;
+    padding-bottom: 1.125em;
 }
