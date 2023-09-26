@@ -1,11 +1,26 @@
-import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME } from "./actionsTypes";
+import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
 import axios from 'axios'
 
-export const orderByAlphabetic = () => {}
+export const orderByAlphabetic = (order) => {
+    return{
+        type: ORDER_BY_ALPHABETIC,
+        payload: order,
+    }
+}
 
-export const orderByPopulation = () => {}
+export const orderByPopulation = (order) => {
+    return {
+        type: ORDER_BY_POPULATION,
+        payload: order,
+    }
+}
 
-export const filterByContinent = () => {}
+export const filterByContinent = (continent) => {
+    return {
+        type: FILTER_BY_CONTINENT,
+        payload: continent,
+    }
+}
 
 export const addAllCountries = () => {
     return async (dispatch) => {
