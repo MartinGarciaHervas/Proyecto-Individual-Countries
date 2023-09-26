@@ -22,6 +22,7 @@ export default function ActivityForm() {
         CountryId: [],
     })
 
+    //Estado local para validar errores
     const [errors, setErrors] = useState({
         name: 'Debe contener solo letras y espacios'
     })
@@ -45,15 +46,18 @@ export default function ActivityForm() {
             [event.target.name]: event.target.value,
         })
 
-        if(event.target.name === 'name')
-        setErrors(validar({
-            name: event.target.value,
-        }))
+        //Como solo tengo que validar el atributo name, en el caso de que el value sea name ahi valido
+        if (event.target.name === 'name')
+            setErrors(validar({
+                name: event.target.value,
+            }))
     }
 
 
     //Toma los valores del select, y los ingresa al estado local, dentro de un array, si ya existen dentro, no los agrega
     function selectHandler(event) {
+
+        //Con este if me fijo si el pais ya existe en los seleccionados para no agregarlo de nuevo
         if (activityData.CountryId.includes(event.target.value)) {
             return setActivityData({
                 ...activityData,
@@ -75,6 +79,8 @@ export default function ActivityForm() {
 
     const submitHandler = async (event) => {
         event.preventDefault();
+
+        //Una vez creada la actividad seteo los campos a su valor de origen
         setActivityData({
             name: '',
             difficulty: '',
@@ -95,12 +101,12 @@ export default function ActivityForm() {
             <div className={style.container}>
                 <form onSubmit={submitHandler}>
                     <div className={style.cuadro}>
-                        <label>Name of Activity</label>
+                        <label>Name of Activity*</label>
                         <input onChange={changeHandler} value={activityData.name} name="name" placeholder="Name of activities"></input>
                         <span>{errors.name}</span>
                     </div>
                     <div className={style.cuadro}>
-                        <label>Difficulty</label>
+                        <label>Difficulty*</label>
                         <select onChange={changeHandler} name="difficulty">
                             <option value='0'>0</option>
                             <option value='1'>1</option>
@@ -112,14 +118,14 @@ export default function ActivityForm() {
                         {/* <input onChange={changeHandler} value={activityData.difficulty} name="difficulty" placeholder="Difficulty"></input> */}
                     </div>
                     <div className={style.cuadro}>
-                        <label>Duration</label>
+                        <label>Duration*</label>
                         <div className={style.duration}>
                             <input type="number" min='0' max='24' onChange={changeHandler} value={activityData.duration} name="duration" placeholder="xx"></input>
                             <p className={style.hs}>Hs</p>
                         </div>
                     </div>
                     <div className={style.cuadro}>
-                        <label>Season</label>
+                        <label>Season*</label>
                         <select onChange={changeHandler} name="season">
                             <option value=''>Season</option>
                             <option value='Winter'>Winter</option>
@@ -127,10 +133,9 @@ export default function ActivityForm() {
                             <option value='Summer'>Summer</option>
                             <option value='Spring'>Spring</option>
                         </select>
-                        {/* <input onChange={changeHandler} value={activityData.season} name="season" placeholder="Season"></input> */}
                     </div>
                     <div className={style.cuadro}>
-                        <label>Country</label>
+                        <label>Country*</label>
 
                         {/* Este input es para filtrar los paises que estan en el select, cambia el estado search */}
                         <input value={search} placeholder="Look for Country" onChange={countriesHandler}></input>
@@ -148,7 +153,10 @@ export default function ActivityForm() {
                         </div>
                     </div>
                     <div className={style.cuadro}>
-                        {errors.name?<button disabled type='submit'>Create Activity</button>:<button type='submit'>Create Activity</button>}
+
+                        {/*En caso de que alguno de los campos este incorrecto o incompleto, desactivo el boton de submit, y muestro un mensaje*/}
+                        {errors.name || activityData.difficulty === '' || activityData.duration === '' || activityData.season === '' || !activityData.CountryId.length ? <button disabled type='submit'>Create Activity</button> : <button type='submit'>Create Activity</button>}
+                        {errors.name || activityData.difficulty === '' || activityData.duration === '' || activityData.season === '' || !activityData.CountryId.length ? <p>* campos obligatorios</p> : <span></span>}
                     </div>
                 </form>
             </div>
