@@ -82,7 +82,7 @@ export default function ActivityForm() {
 
     return (
         <>
-            <div>
+            <div className={style.container}>
                 <form onSubmit={submitHandler}>
                     <div className={style.cuadro}>
                         <label>Name of Activity</label>

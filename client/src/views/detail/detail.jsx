@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { clearDetail, getCountryById } from "../../Redux/Actions/actions";
+
+import style from './detail.module.css'
 
 
 export default function Detail() {
@@ -21,7 +23,7 @@ export default function Detail() {
 
     return (
         <>
-            <div>
+            <div className={style.detail}>
                 <h1>{detail?.pais?.name}</h1>
                 <img src={detail?.pais?.flag} alt={detail?.pais?.name} />
                 <h2>Continent: {detail?.pais?.continent}</h2>
@@ -30,9 +32,6 @@ export default function Detail() {
                 <h2>Area: {detail?.pais?.area}</h2>
                 <h2>Population: {detail?.pais?.population}</h2>
                 <h3>ID: {detail?.pais?.id}</h3>
-                <NavLink to={'/home'}>
-                    <button>HOME</button>
-                </NavLink>
             </div>
         </>
     )

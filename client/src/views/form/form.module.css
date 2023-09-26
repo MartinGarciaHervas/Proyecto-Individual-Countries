@@ -1,9 +1,16 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+    margin: 0;
+    padding: 0;
+}
+
 .cuadro{
     padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .select{
