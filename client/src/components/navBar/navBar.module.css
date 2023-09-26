@@ -2,5 +2,6 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    margin-left: 37vw;
+    margin-left: 35vw;
+    margin-top: 0;
 }

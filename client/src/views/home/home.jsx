@@ -49,6 +49,38 @@ export default function Home() {
     return (
         <>
             <div className={style.home}>
+                <div className={style.order}>
+                    <div className={style.order}>
+                        <div>
+                            <p>By population</p>
+                            <select>
+                                <option>Ascendente</option>
+                                <option>Descendente</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p>Alphabetic</p>
+                            <select>
+                                <option>Ascendente</option>
+                                <option>Descendente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className={style.order}>
+                        <div>
+                            <p>By Continent</p>
+                            <select>
+                                <option>Asia</option>
+                                <option>North America</option>
+                                <option>South America</option>
+                                <option>Antartica</option>
+                                <option>Oceania</option>
+                                <option>Europe</option>
+                                <option>Africa</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <Cards countries={countries} />
                 <div className={style.buttons}>
                     <button className={style.button} onClick={prevHandler}>Prev</button>

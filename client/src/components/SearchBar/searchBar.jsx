@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { addAllCountries, getCountryByName } from "../../Redux/Actions/actions";
+import style from './searchBar.module.css'
 
 
 export default function SearchBar() {
@@ -23,10 +24,10 @@ export default function SearchBar() {
     }
 
     return (
-        <>
-            <input onChange={changeHandler} value={country} type="search" placeholder="Search name" />
-            <button onClick={clickHandler}>Search</button>
-            <button onClick={clearHandler}>Clear</button>
-        </>
+            <div className={style.searchBar}>
+                <input onChange={changeHandler} value={country} type="search" placeholder="Search name" />
+                <button onClick={clickHandler}>Search</button>
+                <button onClick={clearHandler}>Clear</button>
+            </div>
     )
 }
