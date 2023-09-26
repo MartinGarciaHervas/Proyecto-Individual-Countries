@@ -8,7 +8,7 @@ const getDataFromApi = async ()=>{
         const {data} = await axios('http://localhost:5000/countries');
         const datosSeleccionados = data.map((pais) => ({
             id: pais.cca3,
-            name: pais.name.official,
+            name: pais.name.common,
             flag: pais.flags.png,
             continent: pais.continents[0],
             capital: pais.capital?pais.capital[0]:null,

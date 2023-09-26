@@ -13,6 +13,14 @@
     align-items: center;
 }
 
+.duration{
+    display: flex;
+}
+
+.hs{
+    margin: 0;
+}
+
 .select{
     color: black;
     width: 200px;
