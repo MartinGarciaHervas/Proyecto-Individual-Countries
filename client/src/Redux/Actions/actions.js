@@ -1,6 +1,12 @@
 import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME } from "./actionsTypes";
 import axios from 'axios'
 
+export const orderByAlphabetic = () => {}
+
+export const orderByPopulation = () => {}
+
+export const filterByContinent = () => {}
+
 export const addAllCountries = () => {
     return async (dispatch) => {
         try {
