@@ -11,6 +11,7 @@ export default function ActivityForm() {
 
     const countries = useSelector(state => state?.allCountries)
 
+    
     //Estado local con los valores que luego seran enviados por body para crear una activity
     const [activityData, setActivityData] = useState({
         name: '',
@@ -19,7 +20,19 @@ export default function ActivityForm() {
         season: '',
         CountryId: [],
     })
-    console.log(activityData);
+    
+    //Este estado es para filtrar la lista de paises que se van a mosrtar en el options
+    const [search, setSearch] = useState('')
+    
+    //Este handler setea el seach con lo que escribo en el input
+    function countriesHandler(event) {
+        setSearch(event.target.value)
+    }
+
+    //en esta constante se muestran los paises filtrados, a traves de lo que esta en search. las options se renderizan a partir de esta constante
+    const filteredCountries = countries?.filter(country => country.name.toLowerCase().includes(search.toLowerCase()))
+
+    
     
     function changeHandler(event) {
         setActivityData({
@@ -29,26 +42,30 @@ export default function ActivityForm() {
     }
 
 
-    //Crea un array que tiene todos los Id's de los paises, los cuales seran mostrados en el select
-    const options = countries?.map(country => ({
-        value: country?.id
-    }))
-
-
-    // //Toma los valores del select, y los ingresa al estado local, dentro de un array
+    //Toma los valores del select, y los ingresa al estado local, dentro de un array, si ya existen dentro, no los agrega
     function selectHandler(event) {
-        let countries = [];
-        countries.push(event.target.value)
+        if(activityData.CountryId.includes(event.target.value)){
+            return setActivityData({
+                ...activityData,
+                CountryId: [...activityData.CountryId]
+            })
+        }
         setActivityData({
             ...activityData,
-            CountryId: countries
+            CountryId: [...activityData.CountryId, event.target.value]
         })
+    }
+
+    function deleteHandler(countryId){
+        setActivityData({
+            ...activityData,
+            CountryId: activityData.CountryId.filter(country => country !== countryId)
+    })
     }
 
     const submitHandler = async () => {
         try {
             const { response } = await axios.post('http://localhost:3001/activities', activityData);
-            console.log(response);
             alert(response)
         } catch (error) {
             alert(error.message)
@@ -77,11 +94,21 @@ export default function ActivityForm() {
                     </div>
                     <div className={style.cuadro}>
                         <label>Country</label>
-                        <select onChange={selectHandler} className={style.select}>
-                            {options?.map(element =>
-                                <option key={element.value} value={element.value}>{element.value}</option>
-                            )}
+
+                        {/* Este input es para filtrar los paises que estan en el select, cambia el estado search */}
+                        <input value={search} placeholder="Look for Country" onChange={countriesHandler}></input>
+                        <select multiple onChange={selectHandler} className={style.select}>
+                            {filteredCountries?.map(element =>
+                                <option key={element.id} value={element.id}>{element.name}</option>)}
                         </select>
+                        <div>
+                            <p>Selected</p>
+                            {activityData.CountryId.map(country =>
+                            <div className={style.selected} key={country}>
+                                <p className={style.countryName} >{country}</p>
+                                <button className={style.selectedButton} onClick={()=>{deleteHandler(country)}}>x</button>
+                            </div>)}
+                        </div>
                     </div>
                     <div className={style.cuadro}>
                         <button type='submit'>Create Activity</button>

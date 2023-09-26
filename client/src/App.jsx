@@ -11,6 +11,7 @@ import ActivityForm from './views/form/activityForm'
 
 //Estilos
 import style from './App.module.css'
+import NavBar from './components/navBar/navBar'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <div className={style.app}>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/home' element={<Home />} />

@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 
-import SearchBar from "../../components/SearchBar/searchBar";
 import Cards from "../../components/Cards/cards"
 
 import style from './home.module.css'
@@ -50,7 +49,6 @@ export default function Home() {
     return (
         <>
             <div className={style.home}>
-                <SearchBar />
                 <Cards countries={countries} />
                 <div className={style.buttons}>
                     <button className={style.button} onClick={prevHandler}>Prev</button>

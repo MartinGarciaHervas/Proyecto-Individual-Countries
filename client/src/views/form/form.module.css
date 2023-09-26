@@ -1,4 +1,5 @@
 .cuadro{
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,4 +9,20 @@
 .select{
     color: black;
     width: 200px;
+}
+
+.selected{
+    display: flex;
+}
+
+.selectedButton{
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    width: 20px;
+    height: fit-content;
+}
+
+.countryName{
+    margin: 0;
 }
