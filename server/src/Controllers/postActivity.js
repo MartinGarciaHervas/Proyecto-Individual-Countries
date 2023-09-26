@@ -14,7 +14,7 @@ const postActivity = async(req, res)=>{
             await newActivity.addCountry(country);
         });
 
-        res.status(200).json('Activity creada con Exito!!')
+        res.status(200).json({message:`Has creado la actividad ${name} con exito!`})
 
     } catch (error) {
         res.status(500).json({error: error.message})

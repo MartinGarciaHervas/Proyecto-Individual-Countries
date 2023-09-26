@@ -63,10 +63,18 @@ export default function ActivityForm() {
     })
     }
 
-    const submitHandler = async () => {
+    const submitHandler = async (event) => {
+        event.preventDefault();
+        setActivityData({
+            name: '',
+            difficulty: '',
+            duration: '',
+            season: '',
+            CountryId: [],
+        })
         try {
-            const { response } = await axios.post('http://localhost:3001/activities', activityData);
-            alert(response)
+            const {data} = await axios.post('http://localhost:3001/activities', activityData);
+            alert(data.message)
         } catch (error) {
             alert(error.message)
         }
@@ -78,19 +86,19 @@ export default function ActivityForm() {
                 <form onSubmit={submitHandler}>
                     <div className={style.cuadro}>
                         <label>Name of Activity</label>
-                        <input onChange={changeHandler} name="name" placeholder="Name of activities"></input>
+                        <input onChange={changeHandler} value={activityData.name} name="name" placeholder="Name of activities"></input>
                     </div>
                     <div className={style.cuadro}>
                         <label>Difficulty</label>
-                        <input onChange={changeHandler} name="difficulty" placeholder="Difficulty"></input>
+                        <input onChange={changeHandler} value={activityData.difficulty} name="difficulty" placeholder="Difficulty"></input>
                     </div>
                     <div className={style.cuadro}>
                         <label>Duration</label>
-                        <input onChange={changeHandler} name="duration" placeholder="Duration"></input>
+                        <input onChange={changeHandler} value={activityData.duration} name="duration" placeholder="Duration"></input>
                     </div>
                     <div className={style.cuadro}>
                         <label>Season</label>
-                        <input onChange={changeHandler} name="season" placeholder="Season"></input>
+                        <input onChange={changeHandler} value={activityData.season} name="season" placeholder="Season"></input>
                     </div>
                     <div className={style.cuadro}>
                         <label>Country</label>
