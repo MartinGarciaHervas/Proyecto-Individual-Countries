@@ -8,7 +8,7 @@ export default function NavBar() {
     return (
         <>
             <div className={style.container}>
-            {location.pathname !== '/home' && <NavLink to={'/home'}><button>Home</button></NavLink>}
+            {location.pathname !== '/home' && location.pathname !== '/' && <NavLink to={'/home'}><button>Home</button></NavLink>}
                 {location.pathname !== '/form' && location.pathname !== '/' && <NavLink to={'/form'}><button>Create Activity</button></NavLink>}
                 {location.pathname === '/home' && <SearchBar />}
                 {location.pathname !== '/' && <NavLink to={'/'}><button>Exit</button></NavLink>}
