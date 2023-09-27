@@ -68,6 +68,7 @@ export default function ActivityForm() {
             ...activityData,
             CountryId: [...activityData.CountryId, event.target.value]
         })
+        setSearch('')
     }
 
     function deleteHandler(countryId) {
@@ -99,7 +100,7 @@ export default function ActivityForm() {
     return (
         <>
             <div className={style.container}>
-                <form onSubmit={submitHandler}>
+                <form className={style.form} onSubmit={submitHandler}>
                     <div className={style.cuadro}>
                         <label>Name of Activity*</label>
                         <input onChange={changeHandler} value={activityData.name} name="name" placeholder="Name of activities"></input>

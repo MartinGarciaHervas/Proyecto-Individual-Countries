@@ -1,11 +1,10 @@
 const {Activity} = require('../db');
 
-const getAllActivities = async(req, res)=>{
+const getAllActivities = async()=>{
     try {
-        const activities = await Activity.findAll();
-        res.status(200).json(activities);
+        return await Activity.findAll();
     } catch (error) {
-        res.status(500).json({error: error.message})
+        return error
     }
 }
 

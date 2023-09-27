@@ -1,13 +1,26 @@
 .container{
     width: 100vw;
     height: 100vh;
-    background-color: gray;
+    display: flex;
+    justify-content: center;
+    background-image: url(../../assets/481285.jpg);
+    background-size: cover;
     margin: 0;
     padding: 0;
 }
 
+.form{
+    margin-top: 150px;
+    width: 400px;
+    height: 570px;
+    background-color: rgba(84, 84, 84, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
 .cuadro{
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

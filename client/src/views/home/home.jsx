@@ -48,23 +48,30 @@ export default function Home() {
         setCountries([...allCountries].splice(0, COUNTRIES_PER_PAGE))
     }, [allCountries])
 
-    function orderByPopulationHandler(event){
+    function orderByPopulationHandler(event) {
         dispatch(orderByPopulation(event.target.value))
     }
 
-    function orderByAlphabeticHandler(event){
+    function orderByAlphabeticHandler(event) {
         dispatch(orderByAlphabetic(event.target.value))
     }
 
-    function filterByContinentHandler(event){
+    function filterByContinentHandler(event) {
         dispatch(filterByContinent(event.target.value))
+    }
+
+    const [aux, setAux] = useState(false)
+
+    function auxHandler() {
+        setAux(aux ? false : true)
     }
 
     return (
         <>
             <div className={style.home}>
                 <div className={style.order}>
-                    <div className={style.order}>
+                    <button onClick={auxHandler}>Filtros</button>
+                    {aux === true && <div className={style.order2}>
                         <div>
                             <p>By population</p>
                             <select onChange={orderByPopulationHandler}>
@@ -79,8 +86,6 @@ export default function Home() {
                                 <option value='descendente'>Descendente</option>
                             </select>
                         </div>
-                    </div>
-                    <div className={style.order}>
                         <div>
                             <p>By Continent</p>
                             <select onChange={filterByContinentHandler}>
@@ -94,7 +99,8 @@ export default function Home() {
                                 <option value='Africa'>Africa</option>
                             </select>
                         </div>
-                    </div>
+
+                    </div>}
                 </div>
                 <Cards countries={countries} />
                 <div className={style.buttons}>
