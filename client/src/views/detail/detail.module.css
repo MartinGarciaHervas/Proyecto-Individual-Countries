@@ -1,3 +1,16 @@
 .detail{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
     padding-top: 50px;
+}
+
+.activities{
+    display: flex;
+    justify-content: space-evenly;
+     
+}
+
+.activity{
+    padding: 20px;
 }

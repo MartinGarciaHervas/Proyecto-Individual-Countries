@@ -12,7 +12,8 @@ const getCountryById = async (req, res) => {
                 name: activity.name,
                 difficulty: activity.difficulty,
                 duration: activity.duration,
-                season: activity.season
+                season: activity.season,
+                id: activity.id
             }))
 
 
