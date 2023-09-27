@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 
 import Cards from "../../components/Cards/cards"
+import { filterByContinent, orderByAlphabetic, orderByPopulation } from "../../Redux/Actions/actions";
 
 import style from './home.module.css'
 
@@ -9,15 +10,16 @@ const COUNTRIES_PER_PAGE = 10
 
 export default function Home() {
 
+    const dispatch = useDispatch()
 
-    const allCountries = useSelector(state => state.countries);
+    const allCountries = useSelector(state => state?.countries);
 
     const [countries, setCountries] = useState([...allCountries].splice(0, COUNTRIES_PER_PAGE))
 
     const [currentPage, setCurrentPage] = useState(0);
 
     function nextHandler() {
-        const paisesTotales = allCountries.length;
+        const paisesTotales = allCountries?.length;
 
         const nextPage = currentPage + 1;
 
@@ -46,6 +48,18 @@ export default function Home() {
         setCountries([...allCountries].splice(0, COUNTRIES_PER_PAGE))
     }, [allCountries])
 
+    function orderByPopulationHandler(event){
+        dispatch(orderByPopulation(event.target.value))
+    }
+
+    function orderByAlphabeticHandler(event){
+        dispatch(orderByAlphabetic(event.target.value))
+    }
+
+    function filterByContinentHandler(event){
+        dispatch(filterByContinent(event.target.value))
+    }
+
     return (
         <>
             <div className={style.home}>
@@ -53,30 +67,31 @@ export default function Home() {
                     <div className={style.order}>
                         <div>
                             <p>By population</p>
-                            <select>
-                                <option>Ascendente</option>
-                                <option>Descendente</option>
+                            <select onChange={orderByPopulationHandler}>
+                                <option value='ascendente'>Ascendente</option>
+                                <option value='descendente'>Descendente</option>
                             </select>
                         </div>
                         <div>
                             <p>Alphabetic</p>
-                            <select>
-                                <option>Ascendente</option>
-                                <option>Descendente</option>
+                            <select onChange={orderByAlphabeticHandler}>
+                                <option value='ascendente'>Ascendente</option>
+                                <option value='descendente'>Descendente</option>
                             </select>
                         </div>
                     </div>
                     <div className={style.order}>
                         <div>
                             <p>By Continent</p>
-                            <select>
-                                <option>Asia</option>
-                                <option>North America</option>
-                                <option>South America</option>
-                                <option>Antartica</option>
-                                <option>Oceania</option>
-                                <option>Europe</option>
-                                <option>Africa</option>
+                            <select onChange={filterByContinentHandler}>
+                                <option value=''>All</option>
+                                <option value='Asia'>Asia</option>
+                                <option value='North America'>North America</option>
+                                <option value='South America'>South America</option>
+                                <option value='Antarctica'>Antarctica</option>
+                                <option value='Oceania'>Oceania</option>
+                                <option value='Europe'>Europe</option>
+                                <option value='Africa'>Africa</option>
                             </select>
                         </div>
                     </div>

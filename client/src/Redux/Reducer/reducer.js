@@ -12,15 +12,15 @@ function rootReducer(state = intialState, action) {
         case ORDER_BY_ALPHABETIC:
             return {
                 ...state,
-                countries: action.payload === 'ascendente' ? state.allCountries.sort((a, b) => a.name - b.name)
-                    : state.allCountries.sort((a, b) => b.name - a.name)
+                countries: action.payload === 'ascendente' ? [...state.countries].sort((a, b) => a.name.localeCompare(b.name))
+                    : [...state.countries].sort((a, b) => b.name.localeCompare(a.name))
             }
 
         case ORDER_BY_POPULATION:
             return {
                 ...state,
-                countries: action.payload === 'ascendente' ? state.allCountries.sort((a, b)=>a.population - b.population)
-                : state.allCountries.sort((a, b)=>b.population - a.population)
+                countries: action.payload === 'ascendente' ? [...state.countries].sort((a, b)=>a.population - b.population)
+                : [...state.countries].sort((a, b)=>b.population - a.population)
             }
 
         case FILTER_BY_CONTINENT:
