@@ -70,8 +70,9 @@ export default function Home() {
         <>
             <div className={style.home}>
                 <div className={style.order}>
-                    <button onClick={auxHandler}>Filtros</button>
-                    {aux === true && <div className={style.order2}>
+                    {aux ? <button className={style.button} onClick={auxHandler}><span className="material-symbols-outlined">filter_alt_off</span></button>
+                        : <button className={style.button} onClick={auxHandler}><span className="material-symbols-outlined">filter_alt</span></button>}
+                    {<div className={aux?style.order2:style.order3}>
                         <div>
                             <p>By population</p>
                             <select onChange={orderByPopulationHandler}>

@@ -8,6 +8,11 @@
     margin: 20px 20px 0px 20px;
 }
 
+.card:hover {
+    transform: scale(1.02);
+    transition-duration: 0.5s;
+}
+
 .img {
     width: 18.75em;
     height: 9.375em;

@@ -36,6 +36,19 @@ export const addAllCountries = () => {
     }
 }
 
+export const getCountryByName = (name) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/countries/?name=${name}`)
+            return dispatch({
+                type: GET_COUNTRY_BY_NAME,
+                payload: data,
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
 export const getCountryById = (id) => {
     return async (dispatch) => {
         try {
@@ -53,19 +66,5 @@ export const getCountryById = (id) => {
 export const clearDetail = () => {
     return {
         type: CLEAR_DETAIL,
-    }
-}
-
-export const getCountryByName = (name) => {
-    return async (dispatch) => {
-        try {
-            const { data } = await axios.get(`http://localhost:3001/countries/?name=${name}`)
-            return dispatch({
-                type: GET_COUNTRY_BY_NAME,
-                payload: data,
-            })
-        } catch (error) {
-            console.log(error.message);
-        }
     }
 }

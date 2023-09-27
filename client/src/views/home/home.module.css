@@ -16,10 +16,10 @@
 }
 
 .order{
+    height: 65px;
     display: flex;
     width: 200px;
     margin: 0;
-    padding-left: 20px;
     padding-top: 30px;
 }
 
@@ -28,4 +28,37 @@
     width: 200px;
     margin: 0;
     padding-left: 20px;
+    animation: slideRight 1s;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.order3{
+    display: flex;
+    width: 200px;
+    margin: 0;
+    padding-left: 20px;
+    animation: slideLeft 1s;
+    opacity: 0;
+    transform: translateX(-200%);
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
 }
