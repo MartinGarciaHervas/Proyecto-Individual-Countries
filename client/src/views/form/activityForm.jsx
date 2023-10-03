@@ -1,14 +1,17 @@
 import { useState } from "react"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
 
 import style from './form.module.css'
 import validar from "../../helpers/validation"
+import { addActivity } from "../../Redux/Actions/actions"
 
 
 
 export default function ActivityForm() {
+
+    const dispatch = useDispatch()
 
     const countries = useSelector(state => state?.allCountries)
 
@@ -89,12 +92,8 @@ export default function ActivityForm() {
             season: '',
             CountryId: [],
         })
-        try {
-            const { data } = await axios.post('http://localhost:3001/activities', activityData);
-            alert(data.message)
-        } catch (error) {
-            alert(error.message)
-        }
+
+        dispatch(addActivity(activityData))
     }
 
     return (

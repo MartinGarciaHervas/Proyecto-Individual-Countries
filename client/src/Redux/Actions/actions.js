@@ -1,4 +1,4 @@
-import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
 import axios from 'axios'
 
 export const orderByAlphabetic = (order) => {
@@ -25,13 +25,32 @@ export const filterByContinent = (continent) => {
 export const addAllCountries = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('http://localhost:3001/countries');
+            const countriesResponse = await axios.get('http://localhost:3001/countries');
+            const activitiesResponse = await axios.get('http://localhost:3001/activities');
+            const countries = countriesResponse.data
+            const activities = activitiesResponse.data
             return dispatch({
                 type: ADD_ALL_COUNTRIES,
-                payload: data,
+                payload: {countries, activities},
             })
         } catch (error) {
             console.log(error.message);
+        }
+    }
+}
+
+export const addActivity = (activity) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.post('http://localhost:3001/activities', activity);
+            addAllCountries(),
+            alert(data.message)
+            return dispatch({
+                type: ADD_ACTIVITY,
+                payload: activity,
+            })
+        } catch (error) {
+            alert(error.message)
         }
     }
 }

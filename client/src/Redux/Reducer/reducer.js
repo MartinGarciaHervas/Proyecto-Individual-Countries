@@ -1,9 +1,10 @@
-import { ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from '../Actions/actionsTypes'
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from '../Actions/actionsTypes'
 
 let intialState = {
     allCountries: [],
     countries: [],
-    detail: []
+    detail: [],
+    activities: []
 }
 
 function rootReducer(state = intialState, action) {
@@ -32,8 +33,15 @@ function rootReducer(state = intialState, action) {
         case ADD_ALL_COUNTRIES:
             return {
                 ...state,
-                countries: action.payload,
-                allCountries: action.payload
+                countries: action.payload.countries,
+                allCountries: action.payload.countries,
+                activities: action.payload.activities
+            }
+
+        case ADD_ACTIVITY:
+            return {
+                ...state,
+                activities: [...state.activities, action.payload]
             }
 
         case GET_COUNTRY_BY_ID:
