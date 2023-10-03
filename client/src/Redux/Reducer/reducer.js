@@ -1,4 +1,4 @@
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from '../Actions/actionsTypes'
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from '../Actions/actionsTypes'
 
 let intialState = {
     allCountries: [],
@@ -28,6 +28,12 @@ function rootReducer(state = intialState, action) {
             return {
                 ...state,
                 countries: action.payload === '' ? state.allCountries : state.allCountries.filter(country => country.continent === action.payload)
+            }
+
+        case FILTER_BY_ACTIVITY:
+            return {
+                ...state,
+                countries: action.payload === '' ? state.allCountries : state.allCountries.filter(country => country.Activities.some(activity => activity.name.toLowerCase() === action.payload.toLowerCase()))
             }
 
         case ADD_ALL_COUNTRIES:

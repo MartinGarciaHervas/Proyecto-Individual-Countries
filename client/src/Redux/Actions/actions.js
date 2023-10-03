@@ -1,4 +1,4 @@
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
 import axios from 'axios'
 
 export const orderByAlphabetic = (order) => {
@@ -19,6 +19,13 @@ export const filterByContinent = (continent) => {
     return {
         type: FILTER_BY_CONTINENT,
         payload: continent,
+    }
+}
+
+export const filterByActivity = (activity) => {
+    return {
+        type: FILTER_BY_ACTIVITY,
+        payload: activity,
     }
 }
 

@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 
 import Paginado from "../../components/Paginado/Paginado";
-import { filterByContinent, orderByAlphabetic, orderByPopulation } from "../../Redux/Actions/actions";
+import { filterByContinent, orderByAlphabetic, orderByPopulation, filterByActivity } from "../../Redux/Actions/actions";
 
 import style from './home.module.css'
 
 export default function Home() {
+
+    const activities = useSelector(state => state.activities)
 
     const dispatch = useDispatch()
 
@@ -20,6 +22,10 @@ export default function Home() {
 
     function filterByContinentHandler(event) {
         dispatch(filterByContinent(event.target.value))
+    }
+
+    function filterByActivityHandler(event) {
+        dispatch(filterByActivity(event.target.value))
     }
 
     const [aux, setAux] = useState(true)
@@ -60,6 +66,15 @@ export default function Home() {
                                 <option value='Oceania'>Oceania</option>
                                 <option value='Europe'>Europe</option>
                                 <option value='Africa'>Africa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p>By Activity</p>
+                            <select onChange={filterByActivityHandler}>
+                                <option value=''>All</option>
+                                {[...new Set(activities.map(activity => activity.name.toUpperCase()))].map(name => (
+                                    <option key={name} value={name}>{name}</option>
+                                ))}
                             </select>
                         </div>
 
