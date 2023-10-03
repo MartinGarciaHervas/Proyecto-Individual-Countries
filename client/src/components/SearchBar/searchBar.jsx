@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from 'react-redux'
 import { addAllCountries, getCountryByName } from "../../Redux/Actions/actions";
 import style from './searchBar.module.css'
@@ -14,19 +14,24 @@ export default function SearchBar() {
         setCountry(event.target.value)
     }
 
-    function clickHandler() {
-        dispatch(getCountryByName(country))
-        setCountry('')
-    }
+    // La comento a esta funcion porq al final use un useEffect para que vaya buscando a medida que escribo
+    // function clickHandler() {
+    //     dispatch(getCountryByName(country))
+    //     setCountry('')
+    // }
 
     function clearHandler() {
         dispatch(addAllCountries())
     }
 
+    useEffect(()=>{
+        dispatch(getCountryByName(country))
+    },[country])
+
     return (
             <div className={style.searchBar}>
                 <input onChange={changeHandler} value={country} type="search" placeholder="Search name" />
-                <button onClick={clickHandler}>Search</button>
+                {/* <button onClick={clickHandler}>Search</button> */}
                 <button onClick={clearHandler}>Clear</button>
             </div>
     )
