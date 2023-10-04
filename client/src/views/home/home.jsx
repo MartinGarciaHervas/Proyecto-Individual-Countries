@@ -8,7 +8,7 @@ import style from './home.module.css'
 
 export default function Home() {
 
-    const activities = useSelector(state => state.activities)
+    const activities = useSelector(state => state?.activities)
 
     const dispatch = useDispatch()
 
@@ -83,7 +83,7 @@ export default function Home() {
                                 <p>By Activity</p>
                                 <select onChange={filterByActivityHandler}>
                                     <option value=''>All</option>
-                                    {[...new Set(activities.map(activity => activity.name.toUpperCase()))].map(name => (
+                                    {[...new Set(activities?.map(activity => activity.name.toUpperCase()))].map(name => (
                                         <option key={name} value={name}>{name}</option>
                                     ))}
                                 </select>

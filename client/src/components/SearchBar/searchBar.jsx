@@ -22,6 +22,7 @@ export default function SearchBar() {
 
     function clearHandler() {
         dispatch(addAllCountries())
+        setCountry('')
     }
 
     useEffect(()=>{
