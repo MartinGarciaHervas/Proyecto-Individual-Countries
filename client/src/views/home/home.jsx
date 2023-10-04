@@ -16,6 +16,9 @@ export default function Home() {
 
     const dispatch = useDispatch()
 
+
+    //Orders
+
     function orderByPopulationHandler(event) {
         dispatch(orderByPopulation(event.target.value))
     }
@@ -24,6 +27,9 @@ export default function Home() {
         dispatch(orderByAlphabetic(event.target.value))
     }
 
+
+    //Filters
+
     function filterByContinentHandler(event) {
         dispatch(filterByContinent(event.target.value))
     }
@@ -31,6 +37,9 @@ export default function Home() {
     function filterByActivityHandler(event) {
         dispatch(filterByActivity(event.target.value))
     }
+
+
+    //Funcionalidad para los botones que esconden y muestran los filtros y ordenes
 
     const [filterAux, setFilterAux] = useState(true)
 

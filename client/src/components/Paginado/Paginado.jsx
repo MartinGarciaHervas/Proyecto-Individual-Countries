@@ -1,13 +1,21 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 
+//Actions
+import { addAllCountries } from "../../Redux/Actions/actions";
+
+//Components
 import Loader from "../Loader/Loader";
 import Cards from "../Cards/cards"
 
+//Estilos
 import style from './paginado.module.css'
-import { addAllCountries } from "../../Redux/Actions/actions";
 
+
+//Cantidad de Paises por pagina
 const COUNTRIES_PER_PAGE = 10
+
+
 
 export default function Paginado() {
 
@@ -63,6 +71,9 @@ export default function Paginado() {
         setCurrentPage(lastPage)
 
     }
+
+
+    //Manejo el Loader, y lo uso para esperar a que todo cargue en el estado global y Back
 
     useEffect(() => {
         if (allCountries) {
