@@ -1,5 +1,11 @@
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
 import axios from 'axios'
+
+//Action Types
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
+
+
+
+//Filter & Order Actions ----------------------------------------------------------------------------------------
 
 export const orderByAlphabetic = (order) => {
     return{
@@ -29,6 +35,9 @@ export const filterByActivity = (activity) => {
     }
 }
 
+
+//Get Activities ----------------------------------------------------------------------------------------------------
+
 export const addAllCountries = () => {
     return async (dispatch) => {
         try {
@@ -46,6 +55,37 @@ export const addAllCountries = () => {
     }
 }
 
+export const getCountryByName = (name) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/countries/?name=${name}`)
+            return dispatch({
+                type: GET_COUNTRY_BY_NAME,
+                payload: data,
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
+
+export const getCountryById = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/countries/${id}`)
+            return dispatch({
+                type: GET_COUNTRY_BY_ID,
+                payload: data,
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
+
+
+//Post Actions -----------------------------------------------------------------------------------------------------------
+
 export const addActivity = (activity) => {
     return async (dispatch) => {
         try {
@@ -61,32 +101,8 @@ export const addActivity = (activity) => {
     }
 }
 
-export const getCountryByName = (name) => {
-    return async (dispatch) => {
-        try {
-            const { data } = await axios.get(`http://localhost:3001/countries/?name=${name}`)
-            return dispatch({
-                type: GET_COUNTRY_BY_NAME,
-                payload: data,
-            })
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-}
-export const getCountryById = (id) => {
-    return async (dispatch) => {
-        try {
-            const { data } = await axios.get(`http://localhost:3001/countries/${id}`)
-            return dispatch({
-                type: GET_COUNTRY_BY_ID,
-                payload: data,
-            })
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-}
+
+//Clear Actions --------------------------------------------------------------------------------------------------------------
 
 export const clearDetail = () => {
     return {

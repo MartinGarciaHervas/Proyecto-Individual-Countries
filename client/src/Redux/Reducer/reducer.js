@@ -10,6 +10,8 @@ let intialState = {
 function rootReducer(state = intialState, action) {
     switch (action.type) {
 
+        //Order & Filter Cases -----------------------------------------------------------------------------------------------
+
         case ORDER_BY_ALPHABETIC:
             return {
                 ...state,
@@ -20,8 +22,8 @@ function rootReducer(state = intialState, action) {
         case ORDER_BY_POPULATION:
             return {
                 ...state,
-                countries: action.payload === 'ascendente' ? [...state.countries].sort((a, b)=>a.population - b.population)
-                : [...state.countries].sort((a, b)=>b.population - a.population)
+                countries: action.payload === 'ascendente' ? [...state.countries].sort((a, b) => a.population - b.population)
+                    : [...state.countries].sort((a, b) => b.population - a.population)
             }
 
         case FILTER_BY_CONTINENT:
@@ -36,6 +38,9 @@ function rootReducer(state = intialState, action) {
                 countries: action.payload === '' ? state.allCountries : state.allCountries.filter(country => country.Activities.some(activity => activity.name.toLowerCase() === action.payload.toLowerCase()))
             }
 
+        
+        //Get Cases -------------------------------------------------------------------------------------------------------------
+
         case ADD_ALL_COUNTRIES:
             return {
                 ...state,
@@ -44,28 +49,34 @@ function rootReducer(state = intialState, action) {
                 activities: action.payload.activities
             }
 
-        case ADD_ACTIVITY:
-            return {
-                ...state,
-                activities: [...state.activities, action.payload]
-            }
-
         case GET_COUNTRY_BY_ID:
             return {
                 ...state,
                 detail: action.payload
             }
 
-        case CLEAR_DETAIL:
-            return {
-                ...state,
-                detail: []
-            }
-
         case GET_COUNTRY_BY_NAME:
             return {
                 ...state,
                 countries: action.payload
+            }
+
+
+        //Post Cases --------------------------------------------------------------------------------------------------------------
+
+        case ADD_ACTIVITY:
+            return {
+                ...state,
+                activities: [...state.activities, action.payload]
+            }
+
+
+        //Clear Cases ---------------------------------------------------------------------------------------------------------------
+
+        case CLEAR_DETAIL:
+            return {
+                ...state,
+                detail: []
             }
     }
 }
