@@ -21,9 +21,9 @@ export default function Paginado() {
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(addAllCountries())
-    },[])
+    }, [])
 
     const [loading, setLoading] = useState(true)
 
@@ -77,7 +77,7 @@ export default function Paginado() {
 
     useEffect(() => {
         if (allCountries) {
-            setTimeout(()=>{
+            setTimeout(() => {
                 setCurrentPage(0)
                 setCountries([...allCountries].splice(0, COUNTRIES_PER_PAGE))
                 setLoading(false)
@@ -93,13 +93,11 @@ export default function Paginado() {
                 <div>
                     <Cards countries={countries} />
                     <div className={style.buttons}>
-                        <button className={style.button} onClick={prevHandler}>Prev</button>
-                        {currentPage !== 0 && <button onClick={firstPageHandler} className={style.pages}>{1}</button>}
-                        {currentPage !== 0 && <p>...</p>}
-                        <button className={style.pages}>{currentPage + 1}</button>
-                        {currentPage !== (Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE) - 1) && <p>...</p>}
-                        {currentPage !== (Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE) - 1) && <button onClick={lastPageHandler} className={style.pages}>{Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)}</button>}
-                        <button className={style.button} onClick={nextHandler}>Next</button>
+                        <button className={style.button} onClick={prevHandler}><span className="material-symbols-outlined">chevron_left</span></button>
+                        <button onClick={firstPageHandler} className={style.pages}><span className="material-symbols-outlined">first_page</span></button>
+                        <p className={style.page}>Page {currentPage + 1} of {Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)}</p>
+                        <button onClick={lastPageHandler} className={style.pages}><span className="material-symbols-outlined">last_page</span></button>
+                        <button className={style.button} onClick={nextHandler}><span className="material-symbols-outlined">chevron_right</span></button>
                     </div>
                 </div>
             )}
