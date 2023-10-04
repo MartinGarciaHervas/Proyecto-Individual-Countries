@@ -11,7 +11,6 @@ export default function Detail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const detail = useSelector(state => state.detail);
-    console.log(detail);
 
 
     useEffect(() => {
