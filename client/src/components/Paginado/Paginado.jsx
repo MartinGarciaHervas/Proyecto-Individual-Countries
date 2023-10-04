@@ -40,6 +40,20 @@ export default function Paginado() {
         setCurrentPage(prevPage)
     }
 
+    function firstPageHandler(){
+        setCurrentPage(0);
+        setCountries([...allCountries].splice(0, COUNTRIES_PER_PAGE))
+    }
+
+    function lastPageHandler(){
+        const lastPage = Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)-1
+        const primerPais = lastPage * COUNTRIES_PER_PAGE;
+
+        setCountries([...allCountries].splice(primerPais, COUNTRIES_PER_PAGE))
+        setCurrentPage(lastPage)
+        
+    }
+
     useEffect(() => {
         setCurrentPage(0);
         setCountries([...allCountries].splice(0, COUNTRIES_PER_PAGE))
@@ -50,6 +64,11 @@ export default function Paginado() {
             <Cards countries={countries} />
             <div className={style.buttons}>
                 <button className={style.button} onClick={prevHandler}>Prev</button>
+                {currentPage !== 0 && <button onClick={firstPageHandler} className={style.pages}>{1}</button>}
+                {currentPage !== 0 && <p>...</p>}
+                <button className={style.pages}>{currentPage+1}</button>
+                {currentPage !== (Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)-1)  && <p>...</p>}
+                {currentPage !== (Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)-1)  && <button onClick={lastPageHandler} className={style.pages}>{Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)}</button>}
                 <button className={style.button} onClick={nextHandler}>Next</button>
             </div>
         </div>

@@ -1,6 +1,22 @@
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
 .button {
-    margin: 1.25em 0 1.25em 0;
+    /* margin: 1.25em 0 1.25em 0; */
     height: 60px;
     opacity: 1;
     z-index: 100;
+}
+
+.pages{
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    color: black;
 }
