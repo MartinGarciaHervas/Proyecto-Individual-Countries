@@ -50,7 +50,6 @@ export const addActivity = (activity) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post('http://localhost:3001/activities', activity);
-            addAllCountries(),
             alert(data.message)
             return dispatch({
                 type: ADD_ACTIVITY,

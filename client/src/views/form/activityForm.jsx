@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import style from './form.module.css'
 import validar from "../../helpers/validation"
-import { addActivity } from "../../Redux/Actions/actions"
+import { addActivity, addAllCountries } from "../../Redux/Actions/actions"
 
 
 
@@ -93,7 +93,8 @@ export default function ActivityForm() {
             CountryId: [],
         })
 
-        dispatch(addActivity(activityData))
+       await dispatch(addActivity(activityData))
+       await dispatch(addAllCountries())
     }
 
     return (

@@ -39,7 +39,7 @@ function rootReducer(state = intialState, action) {
         case ADD_ALL_COUNTRIES:
             return {
                 ...state,
-                countries: action.payload.countries,
+                countries: action.payload.countries.sort((a, b) => a.name.localeCompare(b.name)),
                 allCountries: action.payload.countries,
                 activities: action.payload.activities
             }
