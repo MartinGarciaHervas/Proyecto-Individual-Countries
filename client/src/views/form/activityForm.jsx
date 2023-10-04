@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 
 //Actions
 import { addActivity, addAllCountries } from "../../Redux/Actions/actions"
@@ -12,6 +13,8 @@ import style from './form.module.css'
 
 
 export default function ActivityForm() {
+
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -97,6 +100,7 @@ export default function ActivityForm() {
 
         await dispatch(addActivity(activityData))
         await dispatch(addAllCountries())
+        navigate('/home')
     }
 
     return (
