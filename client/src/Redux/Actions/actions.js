@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //Action Types
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
 
 
 
@@ -107,5 +107,20 @@ export const addActivity = (activity) => {
 export const clearDetail = () => {
     return {
         type: CLEAR_DETAIL,
+    }
+}
+
+export const deleteActivity = (id)=>{
+    return async (dispatch)=>{
+        try {
+            const {data} = await axios.delete(`http://localhost:3001/activities/${id}`)
+            alert(data)
+            return dispatch({
+                type: DELETE_ACTIVITY,
+                payload: id
+            })
+        } catch (error) {
+            alert(error.message)
+        }
     }
 }

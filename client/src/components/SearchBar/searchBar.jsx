@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from 'react-redux'
+
+//Actions
 import { addAllCountries, getCountryByName } from "../../Redux/Actions/actions";
+
+//Estilos
 import style from './searchBar.module.css'
 
 

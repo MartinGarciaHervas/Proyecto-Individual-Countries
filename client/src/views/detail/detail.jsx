@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
 
 //Actions
-import { clearDetail, getCountryById } from "../../Redux/Actions/actions";
+import { clearDetail, getCountryById, deleteActivity } from "../../Redux/Actions/actions";
 
 //Estilos
 import style from './detail.module.css'
@@ -14,6 +14,11 @@ export default function Detail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const detail = useSelector(state => state.detail);
+
+    const deleteHandler = async(event)=>{
+        await dispatch(deleteActivity(event.target.value))
+        await dispatch(getCountryById(id))
+    }
 
 
     useEffect(() => {
@@ -42,6 +47,7 @@ export default function Detail() {
                     <div className={style.activities}>
                         {detail?.activities?.map(activity =>
                             <div className={style.activity} key={activity.id}>
+                                <button value={activity.id} onClick={deleteHandler}>x</button>
                                 <p>Name: {activity.name}</p>
                                 <p>Difficulty: {activity.difficulty}</p>
                                 <p>Duration: {activity.duration}</p>
