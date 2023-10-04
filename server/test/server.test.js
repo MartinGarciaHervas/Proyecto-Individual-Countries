@@ -4,6 +4,14 @@ const session = require('supertest')
 const agent = session(server)
 
 describe('Test de rutas', ()=>{
+    describe('GET /countries', ()=>{
+
+        it('Debe traer todos los paises de la base de datos', async()=>{
+            const response = await agent.get('/countries');
+            expect(response.body.length).toEqual(250)
+        })
+    })
+
     describe('GET /countries/:idPais', ()=>{
 
         it('Responde con status: 200', async ()=>{
