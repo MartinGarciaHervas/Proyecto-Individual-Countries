@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
+//Router Dom
 import { Routes, Route } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { addAllCountries } from './Redux/Actions/actions'
 
 //Views
 import Landing from './views/landing/landingPage'
@@ -9,17 +7,13 @@ import Home from './views/home/home'
 import Detail from './views/detail/detail'
 import ActivityForm from './views/form/activityForm'
 
-//Estilos
-import style from './App.module.css'
+//Components
 import NavBar from './components/navBar/navBar'
 
+//Estilos
+import style from './App.module.css'
+
 function App() {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(addAllCountries())
-  }, [])
 
   return (
     <>

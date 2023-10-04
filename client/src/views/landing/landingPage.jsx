@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom'
+
+//Estilos
 import style from './landingPage.module.css'
 
 export default function Landing() {

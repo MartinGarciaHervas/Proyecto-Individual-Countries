@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 
-
-import style from './form.module.css'
-import validar from "../../helpers/validation"
+//Actions
 import { addActivity, addAllCountries } from "../../Redux/Actions/actions"
 
+//Helpers
+import validar from "../../helpers/validation"
+
+//Estilos
+import style from './form.module.css'
 
 
 export default function ActivityForm() {
@@ -93,8 +95,8 @@ export default function ActivityForm() {
             CountryId: [],
         })
 
-       await dispatch(addActivity(activityData))
-       await dispatch(addAllCountries())
+        await dispatch(addActivity(activityData))
+        await dispatch(addAllCountries())
     }
 
     return (
@@ -116,7 +118,6 @@ export default function ActivityForm() {
                             <option value='4'>4</option>
                             <option value='5'>5</option>
                         </select>
-                        {/* <input onChange={changeHandler} value={activityData.difficulty} name="difficulty" placeholder="Difficulty"></input> */}
                     </div>
                     <div className={style.cuadro}>
                         <label>Duration*</label>

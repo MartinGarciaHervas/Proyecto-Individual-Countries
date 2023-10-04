@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
+
+//Actions
 import { clearDetail, getCountryById } from "../../Redux/Actions/actions";
 
+//Estilos
 import style from './detail.module.css'
 
 

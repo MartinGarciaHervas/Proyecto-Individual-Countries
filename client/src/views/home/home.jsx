@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 
-import Paginado from "../../components/Paginado/Paginado";
+//Actions
 import { filterByContinent, orderByAlphabetic, orderByPopulation, filterByActivity } from "../../Redux/Actions/actions";
 
+//Components
+import Paginado from "../../components/Paginado/Paginado";
+
+//Estilos
 import style from './home.module.css'
 
 export default function Home() {
