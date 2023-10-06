@@ -1,7 +1,8 @@
 .container {
     position: absolute;
     width: 100vw;
-    height: calc(100vh - 65px);
+    margin-top: 15px;
+    height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
