@@ -12,6 +12,7 @@ export default function NavBar() {
                 {location.pathname !== '/form' && location.pathname !== '/' && <NavLink to={'/form'}><button>Create Activity</button></NavLink>}
                 {location.pathname === '/home' && <SearchBar />}
                 {location.pathname !== '/' && <NavLink to={'/'}><button>Exit</button></NavLink>}
+                {location.pathname !== 'game' && <NavLink to={'/game'}><button>Game</button></NavLink>}
             </div>
         </>
     )

@@ -22,9 +22,17 @@ export default function Game(){
         })
     }
 
+    function clearGuess(){
+        setCountryName({
+            ...countryName,
+            guessName: '',
+        })
+    }
+
     useEffect(()=>{
         if(allCountries){
             setRandomCountry()
+            clearGuess()
         }
     },[])
 
@@ -36,11 +44,13 @@ export default function Game(){
     }
 
     function clickHandler (){
-        if(countryName.realName === countryName.guessName){
+        if(countryName.realName.toUpperCase() === countryName.guessName.toUpperCase()){
             alert('Correct!!');
+            clearGuess()
             setRandomCountry()
         } else {
             alert(`Game Over :( the correct answer was ${countryName.realName}`);
+            clearGuess()
             setRandomCountry()
         }
     }
