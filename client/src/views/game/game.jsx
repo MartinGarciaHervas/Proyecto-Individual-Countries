@@ -1,8 +1,8 @@
 import {useSelector} from 'react-redux'
+import { useEffect, useState } from 'react'
 
 //Estilos
 import style from './game.module.css'
-import { useEffect, useState } from 'react'
 
 export default function Game(){
     const allCountries = useSelector(state=>state.allCountries)
@@ -12,6 +12,7 @@ export default function Game(){
         realName: '',
         guessName: ''
     })
+    const [score, setScore] = useState(0)
 
     function setRandomCountry (){
         const randomCountry = parseInt((Math.random() * 250).toFixed())
@@ -22,17 +23,16 @@ export default function Game(){
         })
     }
 
-    function clearGuess(){
+    useEffect(()=>{
         setCountryName({
             ...countryName,
             guessName: '',
         })
-    }
+    }, [flag])
 
     useEffect(()=>{
         if(allCountries){
             setRandomCountry()
-            clearGuess()
         }
     },[])
 
@@ -46,11 +46,11 @@ export default function Game(){
     function clickHandler (){
         if(countryName.realName.toUpperCase() === countryName.guessName.toUpperCase()){
             alert('Correct!!');
-            clearGuess()
+            setScore(score+10)
             setRandomCountry()
         } else {
             alert(`Game Over :( the correct answer was ${countryName.realName}`);
-            clearGuess()
+            setScore(0)
             setRandomCountry()
         }
     }
@@ -60,6 +60,7 @@ export default function Game(){
             <img src={flag}/>
             <input value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
             <button onClick={clickHandler}>Guess!!</button>
+            <p>Score:{score}</p>
         </div>
     )
 }

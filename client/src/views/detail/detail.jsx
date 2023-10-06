@@ -52,8 +52,6 @@ export default function Detail() {
         }
     }, [detail?.pais?.timezone])
 
-    console.log(horaActual);
-
 
     return (
         <div className={style.container}>
