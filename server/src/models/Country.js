@@ -43,7 +43,7 @@ module.exports = (sequelize) => {
       allowNull:true,
     },
     timezone: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true
     }
   }, { timestamps: false });

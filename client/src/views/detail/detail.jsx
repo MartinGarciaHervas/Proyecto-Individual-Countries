@@ -39,7 +39,8 @@ export default function Detail() {
 
     //Este Handler llama a la funcion, pasandole como argumento la timezone del pais.
     function timeHandler() {
-        return setHoraActual(Time(detail.pais.timezone))
+        const times = detail?.pais?.timezone.map(timezone => Time(timezone));
+        setHoraActual(times)
     }
 
     //Con este use effect, en el momento que cambia la timezone(se ingresa al detail de un pais), ejecuta un intervalo de 1s, que a su vez ejecuta a timeHandler, de esta manera el reloj se actualiza cada segundo
@@ -51,12 +52,15 @@ export default function Detail() {
         }
     }, [detail?.pais?.timezone])
 
+    console.log(horaActual);
 
 
     return (
         <div className={style.container}>
             <div className={style.time}>
-                <p className={style.watch}>{detail?.pais?.name} time: {horaActual}</p>
+                {horaActual?horaActual.map((hora, index)=>
+                    <p key={index} className={style.watch}>{detail?.pais?.name} time: {hora}</p>
+                ):null}
             </div>
             <div className={style.detail}>
                 <div className={style.country} >
