@@ -56,7 +56,15 @@ export default function Game() {
             alert(`Game Over :( the correct answer was ${countryName.realName}`);
             setScore(0)
             setRandomCountry()
+            setLives(3)
         }
+    }
+
+    const [lives, setLives] = useState(3)
+
+    function nextHandler(){
+        setLives(lives - 1);
+        setRandomCountry()
     }
 
     return (
@@ -66,7 +74,9 @@ export default function Game() {
                 <img className={style.img} src={flag} />
                 <input value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
                 <button onClick={clickHandler}>Guess!!</button>
+                {lives>0 && <button onClick={nextHandler}>Next</button>}
                 <p>Score:{score}</p>
+                <p>Lives:{lives}</p>
                 <NavLink to={`/detail/${countryName?.id}`}><p>Learn more about this Country!!!</p></NavLink>
             </div>
         </div>
