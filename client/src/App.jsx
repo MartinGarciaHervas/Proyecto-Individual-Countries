@@ -6,6 +6,7 @@ import Landing from './views/landing/landingPage'
 import Home from './views/home/home'
 import Detail from './views/detail/detail'
 import ActivityForm from './views/form/activityForm'
+import Game from './views/game/game'
 
 //Components
 import NavBar from './components/navBar/navBar'
@@ -24,6 +25,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/form' element={<ActivityForm />} />
+          <Route path='/game' element={<Game />}/>
         </Routes>
       </div>
     </>
