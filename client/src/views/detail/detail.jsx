@@ -56,14 +56,16 @@ export default function Detail() {
     return (
         <div className={style.container}>
             <div className={style.time}>
-                {horaActual?horaActual.map((hora, index)=>
+                {horaActual ? horaActual.map((hora, index) =>
                     <p key={index} className={style.watch}>{detail?.pais?.name} time: {hora}</p>
-                ):null}
+                ) : null}
             </div>
             <div className={style.detail}>
                 <div className={style.country} >
                     <h1>{detail?.pais?.name}</h1>
-                    <img className={style.img} src={detail?.pais?.flag} alt={detail?.pais?.name} />
+                    <div className={style.imgContainer} style={{ backgroundImage: `url(${detail?.pais?.flag})`}}>
+                        <div className={style.img}></div>
+                    </div>
                     <h2>Continent: {detail?.pais?.continent}</h2>
                     <h2>Capital: {detail?.pais?.capital}</h2>
                     <h2>Subregion: {detail?.pais?.subregion}</h2>

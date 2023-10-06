@@ -109,7 +109,7 @@ export default function ActivityForm() {
                 <form className={style.form} onSubmit={submitHandler}>
                     <div className={style.cuadro}>
                         <label>Name of Activity*</label>
-                        <input onChange={changeHandler} value={activityData.name} name="name" placeholder="Name of activities"></input>
+                        <input onChange={changeHandler} autoComplete="off" value={activityData.name} name="name" placeholder="Name of activities"></input>
                         <span>{errors.name}</span>
                     </div>
                     <div className={style.cuadro}>
@@ -126,7 +126,7 @@ export default function ActivityForm() {
                     <div className={style.cuadro}>
                         <label>Duration*</label>
                         <div className={style.duration}>
-                            <input type="number" min='0' max='24' onChange={changeHandler} value={activityData.duration} name="duration" placeholder="xx"></input>
+                            <input type="number" min='0' max='24' autoComplete="off" onChange={changeHandler} value={activityData.duration} name="duration" placeholder="xx"></input>
                             <p className={style.hs}>Hs</p>
                         </div>
                     </div>

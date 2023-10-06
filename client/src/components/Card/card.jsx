@@ -10,7 +10,10 @@ export default function Card({ continent, flag, name, id }) {
                 <h1 className={style.name}>{name}</h1>
                 <h2 className={style.continent}>Continent: {continent}</h2>
                 <NavLink to={`/detail/${id}`} >
-                    <img className={style.img} src={flag} alt={name} />
+                    {/* <img className={style.img} src={flag} alt={name} /> */}
+                    <div className={style.imgContainer} style={{ backgroundImage: `url(${flag})`}}>
+                        <div className={style.img}></div>
+                    </div>
                 </NavLink>
             </div>
         </>
