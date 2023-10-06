@@ -1,0 +1,17 @@
+.container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+
+}
+
+.game{
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+.img{
+    width: 400px;
+    height: 200px;
+}
