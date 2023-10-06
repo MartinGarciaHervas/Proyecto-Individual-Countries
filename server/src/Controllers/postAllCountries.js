@@ -16,7 +16,8 @@ const getDataFromApi = async ()=>{
             area: pais.area,
             population: pais.population,
             map: pais.maps.googleMaps,
-            timezone: pais.timezones
+            timezone: pais.timezones,
+            independent: pais.independent
         }))
         if (data.length) return datosSeleccionados;
         throw new Error('No se pudo obtener los datos de la api')

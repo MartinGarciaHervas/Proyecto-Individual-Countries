@@ -7,6 +7,7 @@ import style from './game.module.css'
 
 export default function Game() {
     const allCountries = useSelector(state => state.allCountries)
+    const independentCountries = allCountries?.filter(country => country.independent === true)
 
     const [flag, setFlag] = useState('')
     const [countryName, setCountryName] = useState({
@@ -17,12 +18,12 @@ export default function Game() {
     const [score, setScore] = useState(0)
 
     function setRandomCountry() {
-        const randomCountry = parseInt((Math.random() * 250).toFixed())
-        setFlag(allCountries[randomCountry]?.flag)
+        const randomCountry = parseInt((Math.random() * independentCountries.length).toFixed())
+        setFlag(independentCountries[randomCountry]?.flag)
         setCountryName({
             ...countryName,
-            realName: allCountries[randomCountry]?.name,
-            id: allCountries[randomCountry]?.id
+            realName: independentCountries[randomCountry]?.name,
+            id: independentCountries[randomCountry]?.id
         })
     }
 
@@ -34,7 +35,7 @@ export default function Game() {
     }, [flag])
 
     useEffect(() => {
-        if (allCountries) {
+        if (independentCountries) {
             setRandomCountry()
         }
     }, [])
