@@ -13,7 +13,7 @@
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
-    padding-top: 200px;
+    padding-top: 100px;
 }
 
 .country{
@@ -50,4 +50,14 @@
 
 .activity{
     padding: 20px;
+}
+
+.time{
+    position: absolute;
+    display: flex;
+    width: 100vw;
+}
+
+.watch{
+    padding-left: 100px;
 }
