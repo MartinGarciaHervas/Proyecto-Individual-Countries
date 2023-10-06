@@ -90,7 +90,7 @@ export default function Paginado() {
             {loading ? (
                 <Loader />
             ) : (
-                <div>
+                <div className={style.container}>
                     <Cards countries={countries} />
                     <div className={style.buttons}>
                         <button className={style.button} onClick={prevHandler}><span className="material-symbols-outlined">chevron_left</span></button>
