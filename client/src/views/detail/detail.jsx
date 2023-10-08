@@ -62,19 +62,23 @@ export default function Detail() {
             </div>
             <div className={style.detail}>
                 <div className={style.country} >
-                    <h1>{detail?.pais?.name}</h1>
-                    <div className={style.imgContainer} style={{ backgroundImage: `url(${detail?.pais?.flag})`}}>
-                        <div className={style.img}></div>
+                    <div className={style.countryCar}>
+                        <div className={style.imgContainer} style={{ backgroundImage: `url(${detail?.pais?.flag})` }}>
+                            <div className={style.img}></div>
+                        </div>
                     </div>
-                    <h2>Continent: {detail?.pais?.continent}</h2>
-                    <h2>Capital: {detail?.pais?.capital}</h2>
-                    <h2>Subregion: {detail?.pais?.subregion}</h2>
-                    <h2>Area: {detail?.pais?.area}</h2>
-                    <h2>Population: {detail?.pais?.population}</h2>
-                    <h3>ID: {detail?.pais?.id}</h3>
-                    <h3>Currency: {detail?.pais?.currency!=='USD'?<a target="_blank" href={`https://es.investing.com/currencies/usd-${detail?.pais?.currency.toLowerCase()}`}>{detail?.pais?.currency}</a>:
-                    <a target="_blank" href={`https://es.investing.com/currencies/usd-eur`}>{detail?.pais?.currency}</a>}</h3>
-                    <p ><a target="_blank" href={detail?.pais?.map}><span className="material-symbols-outlined">distance</span></a></p>
+                    <div className={style.countryCar}>
+                        <h1>{detail?.pais?.name}</h1>
+                        <h2>Continent: {detail?.pais?.continent}</h2>
+                        <h2>Capital: {detail?.pais?.capital}</h2>
+                        <h2>Subregion: {detail?.pais?.subregion}</h2>
+                        <h2>Area: {detail?.pais?.area}</h2>
+                        <h2>Population: {detail?.pais?.population}</h2>
+                        <h3>ID: {detail?.pais?.id}</h3>
+                        <h3>Currency: {detail?.pais?.currency !== 'USD' ? <a target="_blank" href={`https://es.investing.com/currencies/usd-${detail?.pais?.currency.toLowerCase()}`}>{detail?.pais?.currency}</a> :
+                            <a target="_blank" href={`https://es.investing.com/currencies/usd-eur`}>{detail?.pais?.currency}</a>}</h3>
+                        <p ><a target="_blank" href={detail?.pais?.map}><span className="material-symbols-outlined">distance</span></a></p>
+                    </div>
                 </div>
                 {detail?.activities?.length !== 0 && <div className={style.activitiesContainer}>
                     <p>Activities</p>
