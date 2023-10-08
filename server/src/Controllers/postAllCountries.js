@@ -17,7 +17,8 @@ const getDataFromApi = async ()=>{
             population: pais.population,
             map: pais.maps.googleMaps,
             timezone: pais.timezones,
-            independent: pais.independent
+            independent: pais.independent,
+            currency: pais.currencies?Object.keys(pais.currencies)[0]:'usd'
         }))
         if (data.length) return datosSeleccionados;
         throw new Error('No se pudo obtener los datos de la api')

@@ -72,6 +72,8 @@ export default function Detail() {
                     <h2>Area: {detail?.pais?.area}</h2>
                     <h2>Population: {detail?.pais?.population}</h2>
                     <h3>ID: {detail?.pais?.id}</h3>
+                    <h3>Currency: {detail?.pais?.currency!=='USD'?<a target="_blank" href={`https://es.investing.com/currencies/usd-${detail?.pais?.currency.toLowerCase()}`}>{detail?.pais?.currency}</a>:
+                    <a target="_blank" href={`https://es.investing.com/currencies/usd-eur`}>{detail?.pais?.currency}</a>}</h3>
                     <p ><a target="_blank" href={detail?.pais?.map}><span className="material-symbols-outlined">distance</span></a></p>
                 </div>
                 {detail?.activities?.length !== 0 && <div className={style.activitiesContainer}>

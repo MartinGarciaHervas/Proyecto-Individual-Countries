@@ -49,6 +49,9 @@ module.exports = (sequelize) => {
     independent: {
       type: DataTypes.BOOLEAN,
       allowNull:true,
+    },
+    currency: {
+      type: DataTypes.STRING
     }
   }, { timestamps: false });
 };
