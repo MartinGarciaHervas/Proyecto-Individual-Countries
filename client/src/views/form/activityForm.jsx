@@ -108,12 +108,12 @@ export default function ActivityForm() {
             <div className={style.container}>
                 <form className={style.form} onSubmit={submitHandler}>
                     <div className={style.cuadro}>
-                        <label>Name of Activity*</label>
+                        <label className={style.labels}><p className={style.obligatorios}>*</p>Name of Activity</label>
                         <input onChange={changeHandler} autoComplete="off" value={activityData.name} name="name" placeholder="Name of activities"></input>
                         <span>{errors.name}</span>
                     </div>
                     <div className={style.cuadro}>
-                        <label>Difficulty*</label>
+                        <label className={style.labels}><p className={style.obligatorios}>*</p>Difficulty</label>
                         <select onChange={changeHandler} name="difficulty">
                             <option value='0'>0</option>
                             <option value='1'>1</option>
@@ -124,14 +124,14 @@ export default function ActivityForm() {
                         </select>
                     </div>
                     <div className={style.cuadro}>
-                        <label>Duration*</label>
+                        <label className={style.labels}><p className={style.obligatorios}>*</p>Duration</label>
                         <div className={style.duration}>
                             <input type="number" min='0' max='24' autoComplete="off" onChange={changeHandler} value={activityData.duration} name="duration" placeholder="xx"></input>
                             <p className={style.hs}>Hs</p>
                         </div>
                     </div>
                     <div className={style.cuadro}>
-                        <label>Season*</label>
+                        <label className={style.labels}><p className={style.obligatorios}>*</p>Season</label>
                         <select onChange={changeHandler} name="season">
                             <option value=''>Season</option>
                             <option value='Winter'>Winter</option>
@@ -141,7 +141,7 @@ export default function ActivityForm() {
                         </select>
                     </div>
                     <div className={style.cuadro}>
-                        <label>Country*</label>
+                        <label className={style.labels}><p className={style.obligatorios}>*</p>Country</label>
 
                         {/* Este input es para filtrar los paises que estan en el select, cambia el estado search */}
                         <input value={search} placeholder="Look for Country" onChange={countriesHandler}></input>
@@ -162,7 +162,7 @@ export default function ActivityForm() {
 
                         {/*En caso de que alguno de los campos este incorrecto o incompleto, desactivo el boton de submit, y muestro un mensaje*/}
                         {errors.name || activityData.difficulty === '' || activityData.duration === '' || activityData.season === '' || !activityData.CountryId.length ? <button disabled type='submit'>Create Activity</button> : <button type='submit'>Create Activity</button>}
-                        {errors.name || activityData.difficulty === '' || activityData.duration === '' || activityData.season === '' || !activityData.CountryId.length ? <p>* campos obligatorios</p> : <span></span>}
+                        {errors.name || activityData.difficulty === '' || activityData.duration === '' || activityData.season === '' || !activityData.CountryId.length ? <p className={style.obligatorios}>* campos obligatorios</p> : <span></span>}
                     </div>
                 </form>
             </div>

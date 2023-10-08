@@ -12,7 +12,7 @@
 .form{
     margin-top: 150px;
     width: 400px;
-    height: 570px;
+    height: 770px;
     background-color: rgba(84, 84, 84, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -53,4 +53,13 @@
 
 .countryName{
     margin: 0;
+}
+
+.obligatorios{
+    color: red;
+}
+
+.labels{
+    display: flex;
+    align-items: center;
 }
