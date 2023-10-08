@@ -5,6 +5,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 //Importo Los Modelos
 const CountryModel = require('./models/Country');
 const ActivityModel = require('./models/Activity');
+const UserModel = require('./models/User')
 
 
 const sequelize = new Sequelize(
@@ -15,10 +16,11 @@ const sequelize = new Sequelize(
 //Ejecuto la funcion de cada modelo
 CountryModel(sequelize);
 ActivityModel(sequelize);
+UserModel(sequelize);
 
 //Relaciono los modelos
 
-const { Country, Activity } = sequelize.models;
+const { Country, Activity, User } = sequelize.models;
 
 Country.belongsToMany(Activity, {through: 'country_activities'})
 Activity.belongsToMany(Country, {through: 'country_activities'})
