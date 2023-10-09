@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //Action Types
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, SET_USER } from "./actionsTypes";
 
 
 
@@ -122,5 +122,29 @@ export const deleteActivity = (id)=>{
         } catch (error) {
             alert(error.message)
         }
+    }
+}
+
+
+//Login & Register ----------------------------------------------------------------------------------------------------------------
+
+export const registerUser = (user) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.post('http://localhost:3001/user', user);
+            return dispatch({
+                type: REGISTER_USER,
+                payload: data
+            })
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+}
+
+export const setUser = (user) => {
+    return {
+        type: SET_USER,
+        payload: user
     }
 }

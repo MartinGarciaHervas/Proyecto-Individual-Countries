@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+
+//Actions
+import { setUser } from '../../Redux/Actions/actions'
 
 //Estilos
 import styles from './login.module.css'
-import LoginValid from '../../helpers/loginValidator'
 
 export default function Login(){
+
+    const dispatch = useDispatch()
+
+    const login = useSelector(state=>state.user.access)
 
     const navigate = useNavigate()
 
@@ -13,11 +20,6 @@ export default function Login(){
         email: '',
         password: ''
     })
-    const [errors, setErrors] = useState({
-        email: '',
-        password: ''
-    })
-    const [login, setLogin] = useState(false);
 
     useEffect(()=>{
         if(login){
@@ -29,15 +31,11 @@ export default function Login(){
         setUser({
             ...user,
             [event.target.name]:event.target.value
-        });
-        setErrors(LoginValid({
-            ...user,
-            [event.target.name]: event.target.value
-        }))
+        })
     }
 
     function submitHandler(){
-        
+        dispatch(setUser(user))
     }
 
 
@@ -45,9 +43,7 @@ export default function Login(){
         <div>
             <form onSubmit={submitHandler}>
                 <input onChange={changeHandler} name='email' value={user.email} placeholder='Email'></input>
-                <span>{errors.email}</span>
                 <input onChange={changeHandler} name='password' value={user.password} type='password' placeholder='Password'></input>
-                <span>{errors.password}</span>
                 <button type='submit'>Login</button>
             </form>
         </div>
