@@ -1,4 +1,4 @@
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, SET_USER } from '../Actions/actionsTypes'
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from '../Actions/actionsTypes'
 
 let intialState = {
     allCountries: [],
@@ -93,7 +93,22 @@ function rootReducer(state = intialState, action) {
 
         //Login & Register ------------------------------------------------------------------------------------------------------------
 
-        case SET_USER:
+        case LOGIN_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
+
+        case LOGOUT_USER:
+            return {
+                ...state,
+                user: {
+                    ...user,
+                    access: false
+                }
+            }
+
+        case REGISTER_USER:
             return {
                 ...state,
                 user: action.payload

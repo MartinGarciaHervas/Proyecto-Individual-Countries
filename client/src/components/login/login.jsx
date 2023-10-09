@@ -21,11 +21,11 @@ export default function Login(){
         password: ''
     })
 
-    useEffect(()=>{
-        if(login){
-            navigate('/home')
-        }
-    }, [login])
+    // useEffect(()=>{
+    //     if(login){
+    //         navigate('/home')
+    //     }
+    // }, [login])
 
     function changeHandler(event){
         setUser({

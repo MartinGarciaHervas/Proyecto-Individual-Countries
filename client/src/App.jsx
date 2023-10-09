@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 //Router Dom
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 //Views
 import Landing from './views/landing/landingPage'
@@ -15,6 +18,18 @@ import NavBar from './components/navBar/navBar'
 import style from './App.module.css'
 
 function App() {
+
+  const navigate = useNavigate()
+
+  const access = useSelector(state => state?.user.access)
+
+  useEffect(()=>{
+    if(access){
+      navigate('/home')
+    }else{
+      navigate('/')
+    }
+  },[access])
 
   return (
     <>

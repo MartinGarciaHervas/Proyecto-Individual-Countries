@@ -2,8 +2,11 @@ import { useState } from 'react'
 
 import LoginValid from '../../helpers/loginValidator'
 import { registerUser } from '../../Redux/Actions/actions';
+import { useDispatch } from 'react-redux';
 
 export default function Register (){
+
+    const dispatch = useDispatch()
 
     const [user, setUser] = useState({
         email: '',
@@ -25,7 +28,10 @@ export default function Register (){
         }))
     }
 
-    function submitHandler(){
+    console.log(user);
+
+    function submitHandler(event){
+        event.preventDefault();
         dispatch(registerUser(user))
     }
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //Action Types
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, SET_USER } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "./actionsTypes";
 
 
 
@@ -131,10 +131,15 @@ export const deleteActivity = (id)=>{
 export const registerUser = (user) => {
     return async (dispatch) => {
         try {
+            console.log(user);
             const { data } = await axios.post('http://localhost:3001/user', user);
+            alert(`Bienvenido ${user.email}!!!`)
             return dispatch({
                 type: REGISTER_USER,
-                payload: data
+                payload: {
+                    ...user,
+                    access: data
+                }
             })
         } catch (error) {
             alert(error.message)
@@ -142,9 +147,15 @@ export const registerUser = (user) => {
     }
 }
 
+export const logout = () => {
+    return {
+        type: LOGOUT_USER,
+    }
+}
+
 export const setUser = (user) => {
     return {
-        type: SET_USER,
+        type: LOGIN_USER,
         payload: user
     }
 }
