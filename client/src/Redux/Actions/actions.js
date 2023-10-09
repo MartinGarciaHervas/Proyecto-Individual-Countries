@@ -173,7 +173,6 @@ export const loginAction = (user) => {
 //Game actions -------------------------------------------------------------------------------------------------
 
 export const setNewRecord = (score) => {
-    console.log(score);
     return{
         type: SET_NEW_RECORD,
         payload: score
