@@ -58,8 +58,8 @@ export default function Home() {
             <div className={style.home}>
                 <div className={style.order}>
                     <div className={style.filtros}>
-                        {orderAux ? <button className={style.button} onClick={orderAuxHandler}><span className="material-symbols-outlined">filter_alt_off</span></button>
-                            : <button className={style.button} onClick={orderAuxHandler}><span className="material-symbols-outlined">filter_alt</span></button>}
+                        {orderAux ? <button className={style.button} onClick={orderAuxHandler}>Hide Orders</button>
+                            : <button className={style.button} onClick={orderAuxHandler}>Show Orders</button>}
                         {<div className={orderAux ? style.order2 : style.order3}>
                             <div>
                                 <p>By population</p>
@@ -102,7 +102,8 @@ export default function Home() {
                                 </select>
                             </div>
                         </div>
-                        <button onClick={filterAuxHandler} className={style.button}><span className="material-symbols-outlined">toc</span></button>
+                        {filterAux?<button onClick={filterAuxHandler} className={style.button}>Show Filters</button>
+                        :<button onClick={filterAuxHandler} className={style.button}>Hide Filters</button>}
                     </div>
                 </div>
                 <Paginado />

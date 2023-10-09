@@ -93,11 +93,11 @@ export default function Paginado() {
                 <div className={style.container}>
                     <Cards countries={countries} />
                     <div className={style.buttons}>
-                        <button className={style.button} onClick={prevHandler}><span className="material-symbols-outlined">chevron_left</span></button>
-                        <button onClick={firstPageHandler} className={style.pages}><span className="material-symbols-outlined">first_page</span></button>
+                        <button className={style.button} onClick={prevHandler}>Prev</button>
+                        <button onClick={firstPageHandler} className={style.pages}>First</button>
                         <p className={style.page}>Page {currentPage + 1} of {Math.ceil(allCountries?.length / COUNTRIES_PER_PAGE)}</p>
-                        <button onClick={lastPageHandler} className={style.pages}><span className="material-symbols-outlined">last_page</span></button>
-                        <button className={style.button} onClick={nextHandler}><span className="material-symbols-outlined">chevron_right</span></button>
+                        <button onClick={lastPageHandler} className={style.pages}>Last</button>
+                        <button className={style.button} onClick={nextHandler}>Next</button>
                     </div>
                 </div>
             )}
