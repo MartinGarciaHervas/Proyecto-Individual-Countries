@@ -103,8 +103,9 @@ function rootReducer(state = intialState, action) {
             return {
                 ...state,
                 user: {
-                    ...user,
-                    access: false
+                    email:'',
+                    password:'',
+                    access:false,
                 }
             }
 

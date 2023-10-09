@@ -28,8 +28,6 @@ export default function Register (){
         }))
     }
 
-    console.log(user);
-
     function submitHandler(event){
         event.preventDefault();
         dispatch(registerUser(user))

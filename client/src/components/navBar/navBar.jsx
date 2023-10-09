@@ -1,6 +1,8 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom"
-import SearchBar from "../SearchBar/searchBar"
+import { NavLink, useLocation } from "react-router-dom"
 import { useDispatch } from "react-redux"
+
+//Components
+import SearchBar from "../SearchBar/searchBar"
 
 //Actions
 import { logout } from "../../Redux/Actions/actions"
@@ -10,14 +12,12 @@ import style from './navBar.module.css'
 
 export default function NavBar() {
 
-    const navigate = useNavigate()
     const location = useLocation()
 
     const dispatch = useDispatch()
 
-    const clickHandler = async()=>{
-        await dispatch(logout)
-        navigate('/')
+    const clickHandler = ()=>{
+        dispatch(logout())
     }
     return (
         <>

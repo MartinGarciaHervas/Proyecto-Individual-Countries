@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import {useNavigate} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 //Actions
 import { loginAction } from '../../Redux/Actions/actions'
@@ -8,32 +7,29 @@ import { loginAction } from '../../Redux/Actions/actions'
 //Estilos
 import styles from './login.module.css'
 
-export default function Login(){
+export default function Login() {
 
     const dispatch = useDispatch()
-
-    const login = useSelector(state=>state.user.access)
-
-    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         email: '',
         password: ''
     })
 
-    function changeHandler(event){
+    function changeHandler(event) {
         setUser({
             ...user,
-            [event.target.name]:event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
-    function submitHandler(){
+    function submitHandler(event) {
+        event.preventDefault()
         dispatch(loginAction(user))
     }
 
 
-    return(
+    return (
         <div>
             <form onSubmit={submitHandler}>
                 <input onChange={changeHandler} name='email' value={user.email} placeholder='Email'></input>

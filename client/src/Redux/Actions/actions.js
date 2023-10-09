@@ -131,9 +131,8 @@ export const deleteActivity = (id)=>{
 export const registerUser = (user) => {
     return async (dispatch) => {
         try {
-            console.log(user);
-            const { data } = await axios.post('http://localhost:3001/user', user);
-            alert(`Bienvenido ${user.email}!!!`)
+            const { data } = await axios.post(`http://localhost:3001/user`, user);
+            alert(`Welcome ${user.email}!!!`)
             return dispatch({
                 type: REGISTER_USER,
                 payload: {
@@ -154,8 +153,19 @@ export const logout = () => {
 }
 
 export const loginAction = (user) => {
-    return {
-        type: LOGIN_USER,
-        payload: user
+    return async (dispatch) => {
+        try {
+            const {data} = await axios(`http://localhost:3001/user/?email=${user.email}&password=${user.password}`);
+            data?alert(`Welcome Back ${user.email}!!!`):alert(`User not found :(. Register!!`)
+            return dispatch({
+                type: LOGIN_USER,
+                payload: {
+                    ...user,
+                    access: data
+                }
+            })
+        } catch (error) {
+            alert(error.message)
+        }
     }
 }
