@@ -4,6 +4,7 @@
     background-image: url(../../assets/34254-espacio.jpg);
     background-size: cover;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

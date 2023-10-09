@@ -1,11 +1,11 @@
 import { NavLink, useLocation } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
-//Components
-import SearchBar from "../SearchBar/searchBar"
-
 //Actions
 import { logout } from "../../Redux/Actions/actions"
+
+//Components
+import SearchBar from "../SearchBar/searchBar"
 
 //Estilos
 import style from './navBar.module.css'

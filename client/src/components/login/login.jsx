@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { loginAction } from '../../Redux/Actions/actions'
 
 //Estilos
-import styles from './login.module.css'
+import style from './login.module.css'
 
 export default function Login() {
 
@@ -30,10 +30,10 @@ export default function Login() {
 
 
     return (
-        <div>
-            <form onSubmit={submitHandler}>
-                <input onChange={changeHandler} name='email' value={user.email} placeholder='Email'></input>
-                <input onChange={changeHandler} name='password' value={user.password} type='password' placeholder='Password'></input>
+        <div className={style.container}>
+            <form className={style.form} onSubmit={submitHandler}>
+                <input autoComplete="off" onChange={changeHandler} name='email' value={user.email} placeholder='Email'></input>
+                <input autoComplete="off" onChange={changeHandler} name='password' value={user.password} type='password' placeholder='Password'></input>
                 <button type='submit'>Login</button>
             </form>
         </div>

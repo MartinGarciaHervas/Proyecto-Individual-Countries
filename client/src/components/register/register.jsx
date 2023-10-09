@@ -1,8 +1,14 @@
 import { useState } from 'react'
-
-import LoginValid from '../../helpers/loginValidator'
-import { registerUser } from '../../Redux/Actions/actions';
 import { useDispatch } from 'react-redux';
+
+//Actions
+import { registerUser } from '../../Redux/Actions/actions';
+
+//Helpers
+import LoginValid from '../../helpers/loginValidator'
+
+//Estilos
+import style from './register.module.css'
 
 export default function Register (){
 
@@ -13,8 +19,8 @@ export default function Register (){
         password: ''
     })
     const [errors, setErrors] = useState({
-        email: '',
-        password: ''
+        email: 'El nombre de usuario no puede estar vacio',
+        password: 'La contraseña debe tener al menos 1 numero y entre 6 y 10 caracteres'
     })
 
     function changeHandler(event){
@@ -35,12 +41,12 @@ export default function Register (){
 
 
     return (
-        <div>
-            <form onSubmit={submitHandler}>
-                <input onChange={changeHandler} name="email" value={user.email} placeholder="Email"></input>
-                <span>{errors.email}</span>
-                <input onChange={changeHandler} name="password" value={user.password} placeholder="password"></input>
-                <span>{errors.password}</span>
+        <div className={style.container}>
+            <form className={style.form} onSubmit={submitHandler}>
+                <input autoComplete="off" onChange={changeHandler} name="email" value={user.email} placeholder="Example@gmail.com"></input>
+                <span className={style.error}>{errors.email}</span>
+                <input autoComplete="off" onChange={changeHandler} name="password" value={user.password} placeholder="password"></input>
+                <span className={style.error}>{errors.password}</span>
                 <button type='submit'>Register</button>
             </form>
         </div>
