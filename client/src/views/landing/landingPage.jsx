@@ -15,6 +15,7 @@ export default function Landing() {
 
     return (
         <div className={style.container}>
+            <div className={style.gif}></div>
             {aux?<Login/>
             :
             <Register/>}
