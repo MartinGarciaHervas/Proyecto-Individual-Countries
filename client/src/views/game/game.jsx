@@ -88,7 +88,7 @@ export default function Game() {
                 <input value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
                 <button onClick={clickHandler}>Guess!!</button>
                 {lives > 0 && <button onClick={nextHandler}>Next</button>}
-                {record?<p>RECORD:{record}</p>:<p>RECORD:0</p>}
+                <p>RECORD:{record}</p>
                 <p>Score:{score}</p>
                 <p>Lives:{lives}</p>
                 <NavLink to={`/detail/${countryName?.id}`}><p>Learn more about this Country!!!</p></NavLink>

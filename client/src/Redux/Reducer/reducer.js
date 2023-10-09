@@ -8,7 +8,7 @@ let intialState = {
     user: {
         email: '',
         password: '',
-        access: true,
+        access: false,
     },
     gameRecord: 0
 }
