@@ -1,14 +1,22 @@
 const {Country} = require('../db');
 const axios = require('axios')
 
+//Funcion que toma el texto con tildes y lo devuelve sin ellos
+function quitarTildes(texto) {
 
-//Esta Funcino trae toda la informacion de la api, y la mapea devolviendo solo la info que esta en mi modelo
+    //normalize es un metodo de todo string, en NFD lo que hace es separar una letra de su tilde, por ejemplo á = a´
+    //entonces despues con el regex, lo que hace es remplazar los caracteres que no sean letras, por '', osea los elimina. 
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+
+//Esta Funcion trae toda la informacion de la api, y la mapea devolviendo solo la info que necesito para mi modelo
 const getDataFromApi = async ()=>{
     try {
         const {data} = await axios('http://localhost:5000/countries');
         const datosSeleccionados = data.map((pais) => ({
             id: pais.cca3,
-            name: pais.name.common,
+            name: quitarTildes(pais?.translations.spa.common),
             flag: pais.flags.png,
             continent: pais.continents[0],
             capital: pais.capital?pais.capital[0]:null,
