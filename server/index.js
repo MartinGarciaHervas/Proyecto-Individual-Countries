@@ -2,7 +2,7 @@
 const server = require("./src/server");
 const { sequelize } = require('./src/db.js');
 const postCountries = require("./src/Controllers/postAllCountries");
-const PORT = 3001;
+const PORT = process.env.PORT
 
 
 const startServer = async () => {

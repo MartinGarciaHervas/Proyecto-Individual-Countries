@@ -5,6 +5,11 @@ import { store } from './Redux/Store/store';
 import { Provider } from 'react-redux';
 import App from './App.jsx';
 
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:3001'
+
+//Estilos
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

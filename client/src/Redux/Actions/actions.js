@@ -41,9 +41,9 @@ export const filterByActivity = (activity) => {
 export const addAllCountries = () => {
     return async (dispatch) => {
         try {
-            const countriesResponse = await axios.get('http://localhost:3001/countries');
-            const activitiesResponse = await axios.get('http://localhost:3001/activities');
-            const recordResponse = await axios.get('http://localhost:3001/record');
+            const countriesResponse = await axios.get('/countries');
+            const activitiesResponse = await axios.get('/activities');
+            const recordResponse = await axios.get('/record');
             const record = recordResponse.data[0].record
             const countries = countriesResponse.data
             const activities = activitiesResponse.data
@@ -60,7 +60,7 @@ export const addAllCountries = () => {
 export const getCountryByName = (name) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/countries/?name=${name}`)
+            const { data } = await axios.get(`/countries/?name=${name}`)
             return dispatch({
                 type: GET_COUNTRY_BY_NAME,
                 payload: data,
@@ -74,7 +74,7 @@ export const getCountryByName = (name) => {
 export const getCountryById = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/countries/${id}`)
+            const { data } = await axios.get(`/countries/${id}`)
             return dispatch({
                 type: GET_COUNTRY_BY_ID,
                 payload: data,
@@ -91,7 +91,7 @@ export const getCountryById = (id) => {
 export const addActivity = (activity) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post('http://localhost:3001/activities', activity);
+            const { data } = await axios.post('/activities', activity);
             alert(data.message)
             return dispatch({
                 type: ADD_ACTIVITY,
@@ -115,7 +115,7 @@ export const clearDetail = () => {
 export const deleteActivity = (id)=>{
     return async (dispatch)=>{
         try {
-            const {data} = await axios.delete(`http://localhost:3001/activities/${id}`)
+            const {data} = await axios.delete(`/activities/${id}`)
             alert(data)
             return dispatch({
                 type: DELETE_ACTIVITY,
@@ -133,7 +133,7 @@ export const deleteActivity = (id)=>{
 export const registerUser = (user) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post(`http://localhost:3001/user`, user);
+            const { data } = await axios.post(`/user`, user);
             alert(`Welcome ${user.email}!!!`)
             return dispatch({
                 type: REGISTER_USER,
@@ -157,7 +157,7 @@ export const logout = () => {
 export const loginAction = (user) => {
     return async (dispatch) => {
         try {
-            const {data} = await axios(`http://localhost:3001/user/?email=${user.email}&password=${user.password}`);
+            const {data} = await axios(`/user/?email=${user.email}&password=${user.password}`);
             data?alert(`Welcome Back ${user.email}!!!`):alert(`User not found :(. Register!!`)
             return dispatch({
                 type: LOGIN_USER,
@@ -177,7 +177,7 @@ export const loginAction = (user) => {
 export const setNewRecord = (score) => {
     return async (dispatch) => {
         try {
-            const {data} = await axios.post('http://localhost:3001/record', score)
+            const {data} = await axios.post('/record', score)
             return dispatch({
                 type: SET_NEW_RECORD,
                 payload: data

@@ -6,7 +6,7 @@ const getRecordController = async () => {
         if(record.length){
             return record
         }
-        return 0
+        return [{record: 0}]
     } catch (error) {
         return error.message        
     }
