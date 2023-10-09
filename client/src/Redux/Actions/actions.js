@@ -153,7 +153,7 @@ export const logout = () => {
     }
 }
 
-export const setUser = (user) => {
+export const loginAction = (user) => {
     return {
         type: LOGIN_USER,
         payload: user

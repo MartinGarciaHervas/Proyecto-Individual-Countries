@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 
 //Actions
-import { setUser } from '../../Redux/Actions/actions'
+import { loginAction } from '../../Redux/Actions/actions'
 
 //Estilos
 import styles from './login.module.css'
@@ -21,12 +21,6 @@ export default function Login(){
         password: ''
     })
 
-    // useEffect(()=>{
-    //     if(login){
-    //         navigate('/home')
-    //     }
-    // }, [login])
-
     function changeHandler(event){
         setUser({
             ...user,
@@ -35,7 +29,7 @@ export default function Login(){
     }
 
     function submitHandler(){
-        dispatch(setUser(user))
+        dispatch(loginAction(user))
     }
 
 
