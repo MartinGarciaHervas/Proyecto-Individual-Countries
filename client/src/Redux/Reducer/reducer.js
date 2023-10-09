@@ -6,10 +6,11 @@ let intialState = {
     detail: [],
     activities: [],
     user: {
-        email:'',
-        password:'',
-        access:false,
-    }
+        email: '',
+        password: '',
+        access: false,
+    },
+    gameRecord: 0
 }
 
 function rootReducer(state = intialState, action) {
@@ -43,7 +44,7 @@ function rootReducer(state = intialState, action) {
                 countries: action.payload === '' ? state.allCountries : state.allCountries.filter(country => country.Activities.some(activity => activity.name.toLowerCase() === action.payload.toLowerCase()))
             }
 
-        
+
         //Get Cases -------------------------------------------------------------------------------------------------------------
 
         case ADD_ALL_COUNTRIES:
@@ -87,7 +88,7 @@ function rootReducer(state = intialState, action) {
         case DELETE_ACTIVITY:
             return {
                 ...state,
-                activities: state.activities.filter(activity=>activity.id !== action.payload)
+                activities: state.activities.filter(activity => activity.id !== action.payload)
             }
 
 
@@ -103,9 +104,9 @@ function rootReducer(state = intialState, action) {
             return {
                 ...state,
                 user: {
-                    email:'',
-                    password:'',
-                    access:false,
+                    email: '',
+                    password: '',
+                    access: false,
                 }
             }
 

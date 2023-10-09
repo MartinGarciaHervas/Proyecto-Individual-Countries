@@ -60,12 +60,22 @@ export default function Game() {
         }
     }
 
+    //Lives Handler ----------------------------------------------------------------
+
     const [lives, setLives] = useState(3)
 
     function nextHandler(){
         setLives(lives - 1);
         setRandomCountry()
     }
+
+    //Record Handler -----------------------------------------------------------------
+
+    const record = useSelector(state=>state.gameRecord)
+
+    useEffect(()=>{
+        // score > record && dispatch(setNewRecord(score))
+    },[score])
 
     return (
         <div className={style.container}>
