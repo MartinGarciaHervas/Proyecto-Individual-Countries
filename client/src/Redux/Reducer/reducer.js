@@ -8,7 +8,7 @@ let intialState = {
     user: {
         email: '',
         password: '',
-        access: false,
+        access: true,
     },
     gameRecord: 0
 }
@@ -52,7 +52,8 @@ function rootReducer(state = intialState, action) {
                 ...state,
                 countries: action.payload.countries.sort((a, b) => a.name.localeCompare(b.name)),
                 allCountries: action.payload.countries,
-                activities: action.payload.activities
+                activities: action.payload.activities,
+                gameRecord: action.payload.record,
             }
 
         case GET_COUNTRY_BY_ID:

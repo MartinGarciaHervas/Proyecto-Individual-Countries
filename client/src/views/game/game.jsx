@@ -22,7 +22,7 @@ export default function Game() {
         id: ''
     })
 
-    const record = useSelector(state => state.gameRecord)
+    const record = useSelector(state => state?.gameRecord)
     const [score, setScore] = useState(0)
 
     function setRandomCountry() {
@@ -63,7 +63,7 @@ export default function Game() {
         } else {
             alert(`Game Over :( the correct answer was ${countryName.realName}`);
             if (score > record) {
-                dispatch(setNewRecord(score))}
+                dispatch(setNewRecord({score: score}))}
             setScore(0)
             setRandomCountry()
             setLives(3)
@@ -88,7 +88,7 @@ export default function Game() {
                 <input value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
                 <button onClick={clickHandler}>Guess!!</button>
                 {lives > 0 && <button onClick={nextHandler}>Next</button>}
-                <p>RECORD:{record}</p>
+                {record?<p>RECORD:{record}</p>:<p>RECORD:0</p>}
                 <p>Score:{score}</p>
                 <p>Lives:{lives}</p>
                 <NavLink to={`/detail/${countryName?.id}`}><p>Learn more about this Country!!!</p></NavLink>

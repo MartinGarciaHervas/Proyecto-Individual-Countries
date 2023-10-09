@@ -43,11 +43,13 @@ export const addAllCountries = () => {
         try {
             const countriesResponse = await axios.get('http://localhost:3001/countries');
             const activitiesResponse = await axios.get('http://localhost:3001/activities');
+            const recordResponse = await axios.get('http://localhost:3001/record');
+            const record = recordResponse.data[0].record
             const countries = countriesResponse.data
             const activities = activitiesResponse.data
             return dispatch({
                 type: ADD_ALL_COUNTRIES,
-                payload: {countries, activities},
+                payload: {countries, activities, record},
             })
         } catch (error) {
             console.log(error.message);
@@ -176,7 +178,6 @@ export const setNewRecord = (score) => {
     return async (dispatch) => {
         try {
             const {data} = await axios.post('http://localhost:3001/record', score)
-            console.log(data);
             return dispatch({
                 type: SET_NEW_RECORD,
                 payload: data

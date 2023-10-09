@@ -3,8 +3,7 @@ const {Record} = require('../db')
 const getRecordController = async () => {
     try {
         const record = await Record.findAll()
-
-        if(record){
+        if(record.length){
             return record
         }
         return 0
