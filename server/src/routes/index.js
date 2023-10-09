@@ -7,6 +7,7 @@ const getAllActivitiesHandler = require("../Handlers/getAllActivitiesHandler");
 const getAllCountriesHandler = require("../Handlers/getAllCountriesHandler");
 const deleteActivityHandler = require("../Handlers/deleteActivityHandler");
 const postUserHandler = require("../Handlers/postUserHandler");
+const loginHandler = require("../Handlers/login");
 
 //Router
 const mainRouter = Router();
@@ -18,5 +19,6 @@ mainRouter.post('/activities', postActivity);
 mainRouter.get('/activities', getAllActivitiesHandler);
 mainRouter.delete('/activities/:idActivity', deleteActivityHandler)
 mainRouter.post('/user', postUserHandler)
+mainRouter.get('/user', loginHandler)
 
 module.exports = mainRouter;
