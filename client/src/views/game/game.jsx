@@ -14,6 +14,7 @@ export default function Game() {
 
     const allCountries = useSelector(state => state.allCountries)
     const independentCountries = allCountries?.filter(country => country.independent === true)
+    console.log(independentCountries);
 
     const [flag, setFlag] = useState('')
     const [countryName, setCountryName] = useState({

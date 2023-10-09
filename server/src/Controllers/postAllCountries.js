@@ -39,7 +39,9 @@ const getDataFromApi = async ()=>{
 //Esta funcion usa la informacion que obtengo en la anterior, y la agrega a mi base de datos
 const postAllCountries = async (data) => {
     try {
-        await Country.bulkCreate(data);
+        const countries = await Country.findAll()
+        
+        !countries.length? await Country.bulkCreate(data) : null;
     } catch (error) {
         throw new Error (error.message)
     }
