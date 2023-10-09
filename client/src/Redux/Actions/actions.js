@@ -173,8 +173,16 @@ export const loginAction = (user) => {
 //Game actions -------------------------------------------------------------------------------------------------
 
 export const setNewRecord = (score) => {
-    return{
-        type: SET_NEW_RECORD,
-        payload: score
+    return async (dispatch) => {
+        try {
+            const {data} = await axios.post('http://localhost:3001/record', score)
+            console.log(data);
+            return dispatch({
+                type: SET_NEW_RECORD,
+                payload: data
+            })
+        } catch (error) {
+            alert(error.message)
+        }
     }
 }
