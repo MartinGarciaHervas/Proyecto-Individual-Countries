@@ -9,6 +9,7 @@ const deleteActivityHandler = require("../Handlers/deleteActivityHandler");
 const postUserHandler = require("../Handlers/postUserHandler");
 const loginHandler = require("../Handlers/login");
 const recordHandler = require("../Handlers/postRecordHandler");
+const getRecordHandler = require("../Handlers/getRecordHandler");
 
 //Router
 const mainRouter = Router();
@@ -21,6 +22,7 @@ mainRouter.get('/activities', getAllActivitiesHandler);
 mainRouter.delete('/activities/:idActivity', deleteActivityHandler)
 mainRouter.post('/user', postUserHandler)
 mainRouter.get('/user', loginHandler)
+mainRouter.get('/record', getRecordHandler)
 mainRouter.post('/record', recordHandler)
 
 module.exports = mainRouter;
