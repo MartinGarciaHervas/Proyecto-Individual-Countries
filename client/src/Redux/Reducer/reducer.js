@@ -1,4 +1,4 @@
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from '../Actions/actionsTypes'
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER, SET_NEW_RECORD } from '../Actions/actionsTypes'
 
 let intialState = {
     allCountries: [],
@@ -114,6 +114,15 @@ function rootReducer(state = intialState, action) {
             return {
                 ...state,
                 user: action.payload
+            }
+
+        
+        //Game -----------------------------------------------------------------------------------------------------------------
+
+        case SET_NEW_RECORD:
+            return {
+                ...state,
+                gameRecord: action.payload
             }
     }
 }

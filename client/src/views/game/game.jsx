@@ -1,11 +1,17 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+
+//Actions
+import { setNewRecord } from '../../Redux/Actions/actions'
 
 //Estilos
 import style from './game.module.css'
 
 export default function Game() {
+
+    const dispatch = useDispatch()
+
     const allCountries = useSelector(state => state.allCountries)
     const independentCountries = allCountries?.filter(country => country.independent === true)
 
@@ -15,6 +21,8 @@ export default function Game() {
         guessName: '',
         id: ''
     })
+
+    const record = useSelector(state => state.gameRecord)
     const [score, setScore] = useState(0)
 
     function setRandomCountry() {
@@ -54,6 +62,8 @@ export default function Game() {
             setRandomCountry()
         } else {
             alert(`Game Over :( the correct answer was ${countryName.realName}`);
+            if (score > record) {
+                dispatch(setNewRecord(score))}
             setScore(0)
             setRandomCountry()
             setLives(3)
@@ -64,18 +74,11 @@ export default function Game() {
 
     const [lives, setLives] = useState(3)
 
-    function nextHandler(){
+    function nextHandler() {
         setLives(lives - 1);
         setRandomCountry()
     }
-
-    //Record Handler -----------------------------------------------------------------
-
-    const record = useSelector(state=>state.gameRecord)
-
-    useEffect(()=>{
-        // score > record && dispatch(setNewRecord(score))
-    },[score])
+    
 
     return (
         <div className={style.container}>
@@ -84,7 +87,8 @@ export default function Game() {
                 <img className={style.img} src={flag} />
                 <input value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
                 <button onClick={clickHandler}>Guess!!</button>
-                {lives>0 && <button onClick={nextHandler}>Next</button>}
+                {lives > 0 && <button onClick={nextHandler}>Next</button>}
+                <p>RECORD:{record}</p>
                 <p>Score:{score}</p>
                 <p>Lives:{lives}</p>
                 <NavLink to={`/detail/${countryName?.id}`}><p>Learn more about this Country!!!</p></NavLink>

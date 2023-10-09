@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //Action Types
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER, SET_NEW_RECORD } from "./actionsTypes";
 
 
 
@@ -167,5 +167,15 @@ export const loginAction = (user) => {
         } catch (error) {
             alert(error.message)
         }
+    }
+}
+
+//Game actions -------------------------------------------------------------------------------------------------
+
+export const setNewRecord = (score) => {
+    console.log(score);
+    return{
+        type: SET_NEW_RECORD,
+        payload: score
     }
 }
