@@ -5,12 +5,15 @@ import { store } from './Redux/Store/store';
 import { Provider } from 'react-redux';
 import App from './App.jsx';
 
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:3001'
-
 //Estilos
 import './index.css'
+
+
+import axios from 'axios';
+
+//Esto te permite no tener que repetir el url cada vez que queres hacer una peticion, solo pones la Ruta
+axios.defaults.baseURL = 'http://localhost:3001'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
