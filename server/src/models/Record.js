@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('Record', {
         record: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull: false
         }
