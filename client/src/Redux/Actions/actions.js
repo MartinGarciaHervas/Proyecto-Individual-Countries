@@ -158,6 +158,7 @@ export const loginAction = (user) => {
     return async (dispatch) => {
         try {
             const {data} = await axios(`/user/?email=${user.email}&password=${user.password}`);
+            console.log(data);
             data?alert(`Welcome Back ${user.email}!!!`):alert(`User not found :(. Register!!`)
             return dispatch({
                 type: LOGIN_USER,
