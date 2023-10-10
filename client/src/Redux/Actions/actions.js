@@ -159,12 +159,12 @@ export const loginAction = (user) => {
         try {
             const {data} = await axios(`/user/?email=${user.email}&password=${user.password}`);
             console.log(data);
-            data?alert(`Welcome Back ${user.email}!!!`):alert(`User not found :(. Register!!`)
+            data?alert(`Welcome Back ${data[1].username}!!!`):alert(`User not found :(. Register!!`)
             return dispatch({
                 type: LOGIN_USER,
                 payload: {
-                    ...user,
-                    access: data
+                    ...data[1],
+                    access: data[0]
                 }
             })
         } catch (error) {
