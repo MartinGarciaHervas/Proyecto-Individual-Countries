@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
 
 //Actions
-import { clearDetail, getCountryById, deleteActivity } from "../../Redux/Actions/actions";
+import { clearDetail, getCountryById, deleteCountryFromActivity } from "../../Redux/Actions/actions";
 
 //Components
 import Time from "../../helpers/Time";
@@ -19,7 +19,7 @@ export default function Detail() {
     const detail = useSelector(state => state.detail);
 
     const deleteHandler = async (event) => {
-        await dispatch(deleteActivity(event.target.value))
+        await dispatch(deleteCountryFromActivity([detail?.pais?.id,event.target.value]))
         await dispatch(getCountryById(id))
     }
 
