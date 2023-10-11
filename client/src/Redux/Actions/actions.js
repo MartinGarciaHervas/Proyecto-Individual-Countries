@@ -125,7 +125,7 @@ export const addActivity = (activity) => {
 export const editActivity = (activity) => {
     return async (dispatch) => {
         try {
-            const editResponse = await axios.put('activities', activity);
+            const editResponse = await axios.put('/activities', activity);
             alert(editResponse.data);
             const activitiesResponse = await axios.get('/activities');
             return dispatch({

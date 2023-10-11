@@ -3,58 +3,42 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //Actions
-import { addActivity, addAllCountries } from "../../Redux/Actions/actions"
-
-//Helpers
-import validar from "../../helpers/validation"
+import { addAllCountries, editActivity } from "../../Redux/Actions/actions"
 
 //Estilos
 import style from '../form/form.module.css'
 
 export default function EditActivity() {
-    const { id } = useParams()
-    const allActivities = useSelector(state => state.activities)
-    const activity = allActivities?.filter(activity => activity.id === id)[0]
-
-
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch()
-
-    const countries = useSelector(state => state?.allCountries)
-
-    const seasons = ['Winter', 'Summer', 'Autumn', 'Spring']
-
-
-    //Estado local con los valores que luego seran enviados por body para crear una activity
-    const [activityData, setActivityData] = useState({
-        name: '',
-        difficulty: '',
-        duration: '',
-        season: '',
-        CountryId: [],
-    })
-
-    useEffect(()=>{
-        setActivityData({
-            name: activity?.name,
-            difficulty: activity?.difficulty,
-            duration: activity?.duration.length === 3? activity?.duration.slice(0, 1): activity?.duration.slice(0, 2),
-            season: activity?.season,
-            CountryId: activity?.Countries?.map(country => country.id),
-        })
-    }, [activity])
     
-    console.log(activityData);
-    //Estado local para validar errores
-    const [errors, setErrors] = useState({
-        name: 'Debe contener solo letras y espacios'
+    const { id } = useParams()
+    
+    const navigate = useNavigate()
+    
+    const dispatch = useDispatch()
+    
+    const countries = useSelector(state => state?.allCountries)
+    
+    const allActivities = useSelector(state => state.activities)
+    
+    const activity = allActivities?.filter(activity => activity.id === id)[0]
+    
+    const seasons = ['Winter', 'Summer', 'Autumn', 'Spring']
+    
+
+    //Estado local con los valores actuales de la actividad a editar
+    const [activityData, setActivityData] = useState({
+        id: id,
+        name: activity?.name,
+        difficulty: activity?.difficulty,
+        duration: activity?.duration.length === 3? activity?.duration.slice(0, 1): activity?.duration.slice(0, 2),
+        season: activity?.season,
+        CountryId: activity?.Countries?.map(country => country.id),
     })
 
     //Este estado es para filtrar la lista de paises que se van a mosrtar en el options
     const [search, setSearch] = useState('')
 
-    //Este handler setea el seach con lo que escribo en el input
+    //Este handler setea el search con lo que escribo en el input
     function countriesHandler(event) {
         setSearch(event.target.value)
     }
@@ -105,18 +89,9 @@ export default function EditActivity() {
     const submitHandler = async (event) => {
         event.preventDefault();
 
-        //Una vez creada la actividad seteo los campos a su valor de origen
-        setActivityData({
-            name: '',
-            difficulty: '',
-            duration: '',
-            season: '',
-            CountryId: [],
-        })
-
-        await dispatch(addActivity(activityData))
+        await dispatch(editActivity(activityData))
         await dispatch(addAllCountries())
-        navigate('/activties')
+        navigate('/activities')
     }
 
     return (
