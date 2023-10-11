@@ -9,10 +9,12 @@ const editActivityController = async (id, name, difficulty, duration, season, Co
         activity.duration = `${duration}Hs`;
         activity.season = season;
 
-        CountryId.forEach(async(element) => {
+        await activity.setCountries([])
+
+        for (const element of CountryId) {
             const country = await Country.findByPk(element);
-            await activity.setCountries(country);
-        })
+            await activity.addCountry(country);
+        }
 
         await activity.save()
 

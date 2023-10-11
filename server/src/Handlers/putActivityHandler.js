@@ -2,7 +2,6 @@ const editActivityController = require("../Controllers/putActivityController")
 
 const editActivityHandler= async(req, res)=>{
     try {
-        console.log('hola');
         const {id, name, difficulty, duration, season, CountryId} = req.body
         const response = await editActivityController(id, name, difficulty, duration, season, CountryId)
         res.status(200).json(response)

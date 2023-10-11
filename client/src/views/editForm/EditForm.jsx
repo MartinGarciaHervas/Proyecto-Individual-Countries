@@ -121,12 +121,11 @@ export default function EditActivity() {
                     </div>
                     <div className={style.cuadro}>
                         <label className={style.labels}>Season</label>
-                        <div className={style.checkbox}>
-                            {seasons.map((season, index) =>
-                                activityData.season === season?<label key={index}><input checked onChange={changeHandler} key={index} type="radio" name="season" value={season} />{season}</label>
-                                : <label key={index}><input onChange={changeHandler} key={index} type="radio" name="season" value={season} />{season}</label>
-                            )}
-                        </div>
+                        <select name="season" onChange={changeHandler} value={activityData.season}>
+                            {seasons.map(season => 
+                                <option key={season} value={season} >{season}</option>
+                                )}
+                        </select>
                     </div>
                     <div className={style.cuadro}>
                         <label className={style.labels}>Country</label>
