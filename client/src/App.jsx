@@ -10,6 +10,7 @@ import Home from './views/home/home'
 import Detail from './views/detail/detail'
 import ActivityForm from './views/form/activityForm'
 import Game from './views/game/game'
+import Activities from './views/activities/Activities'
 
 //Components
 import NavBar from './components/navBar/navBar'
@@ -41,6 +42,7 @@ function App() {
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/form' element={<ActivityForm />} />
           <Route path='/game' element={<Game />}/>
+          <Route path='/activities' element={<Activities />} />
         </Routes>
       </div>
     </>

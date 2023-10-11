@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //Action Types
-import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER, SET_NEW_RECORD } from "./actionsTypes";
+import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_NAME, ORDER_BY_ALPHABETIC, ORDER_BY_POPULATION, REGISTER_USER, LOGIN_USER, LOGOUT_USER, SET_NEW_RECORD, DELETE_COUNTRY_FROM_ACTIVITY } from "./actionsTypes";
 
 
 
@@ -36,7 +36,7 @@ export const filterByActivity = (activity) => {
 }
 
 
-//Get Activities ----------------------------------------------------------------------------------------------------
+//Get Actions ----------------------------------------------------------------------------------------------------
 
 export const addAllCountries = () => {
     return async (dispatch) => {
@@ -78,6 +78,22 @@ export const getCountryById = (id) => {
             return dispatch({
                 type: GET_COUNTRY_BY_ID,
                 payload: data,
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
+
+export const deleteCountryFromActivity = (ids) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`/activities/${ids}`)
+            const activitiesResponse = await axios.get('/activities');
+            alert(response.data)
+            return dispatch({
+                type: DELETE_COUNTRY_FROM_ACTIVITY,
+                payload: activitiesResponse.data
             })
         } catch (error) {
             console.log(error.message);
