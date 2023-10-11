@@ -11,6 +11,7 @@ const loginHandler = require("../Handlers/login");
 const recordHandler = require("../Handlers/postRecordHandler");
 const getRecordHandler = require("../Handlers/getRecordHandler");
 const deleteCountryFromActivityHandler = require("../Handlers/deleteCountryFromActivity");
+const editActivityHandler = require("../Handlers/putActivityHandler");
 
 //Router
 const mainRouter = Router();
@@ -26,5 +27,6 @@ mainRouter.post('/user', postUserHandler)
 mainRouter.get('/user', loginHandler)
 mainRouter.get('/record', getRecordHandler)
 mainRouter.post('/record', recordHandler)
+mainRouter.put('/activities', editActivityHandler)
 
 module.exports = mainRouter;
