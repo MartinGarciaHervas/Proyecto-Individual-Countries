@@ -17,6 +17,7 @@ import NavBar from './components/navBar/navBar'
 
 //Estilos
 import style from './App.module.css'
+import EditActivity from './views/editForm/EditForm'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/form' element={<ActivityForm />} />
+          <Route path='/form/:id' element={<EditActivity />}/>
           <Route path='/game' element={<Game />}/>
           <Route path='/activities' element={<Activities />} />
         </Routes>
