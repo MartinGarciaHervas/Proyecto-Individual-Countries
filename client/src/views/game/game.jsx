@@ -63,7 +63,8 @@ export default function Game() {
         } else {
             alert(`Game Over :( the correct answer was ${countryName.realName}`);
             if (score > record) {
-                dispatch(setNewRecord({score: score}))}
+                dispatch(setNewRecord({ score: score }))
+            }
             setScore(0)
             setRandomCountry()
             setLives(3)
@@ -78,19 +79,21 @@ export default function Game() {
         setLives(lives - 1);
         setRandomCountry()
     }
-    
+
 
     return (
         <div className={style.container}>
             <div className={style.game}>
-                <h1>Which country is it?</h1>
+                <div className={style.textContainer}>
+                    <h1>Which country is it?</h1>
+                </div>
                 <img className={style.img} src={flag} />
-                <input value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
+                <input className={style.input} value={countryName.guessName} onChange={changeHandler} placeholder='Guess the country'></input>
                 <button onClick={clickHandler}>Guess!!</button>
                 {lives > 0 && <button onClick={nextHandler}>Next</button>}
                 <p>RECORD:{record}</p>
                 <p>Score:{score}</p>
-                <p>Lives:{lives}</p>
+                <p>Next's:{lives}</p>
                 <NavLink to={`/detail/${countryName?.id}`}><p>Learn more about this Country!!!</p></NavLink>
             </div>
         </div>
