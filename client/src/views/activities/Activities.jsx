@@ -3,13 +3,17 @@ import style from './activities.module.css'
 import { NavLink } from 'react-router-dom'
 
 //Actions
-import { deleteCountryFromActivity } from '../../Redux/Actions/actions'
+import { deleteActivity, deleteCountryFromActivity } from '../../Redux/Actions/actions'
 
 export default function Activities() {
 
     const dispatch = useDispatch()
 
     const allActivities = useSelector(state => state?.activities)
+
+    function deleteActivityHandler(event){
+        dispatch(deleteActivity(event.target.value))
+    }
 
     function deleteCountryHandler(ids){
         dispatch(deleteCountryFromActivity(ids))
@@ -23,7 +27,7 @@ export default function Activities() {
                         <div className={style.activityNameContainer}>
                             <button className={style.editButton}>e</button>
                             <p key={activity.name}>{activity.name}</p>
-                            <button className={style.deleteButton}>x</button>
+                            <button value={activity.id} onClick={deleteActivityHandler} className={style.deleteButton}>x</button>
                         </div>
                         <p key={activity.difficulty}>Difficulty: {activity.difficulty}</p>
                         <p key={activity.duration}>Duration: {activity.duration}</p>
