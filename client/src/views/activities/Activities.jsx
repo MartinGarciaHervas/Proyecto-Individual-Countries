@@ -11,11 +11,11 @@ export default function Activities() {
 
     const allActivities = useSelector(state => state?.activities)
 
-    function deleteActivityHandler(event){
+    function deleteActivityHandler(event) {
         dispatch(deleteActivity(event.target.value))
     }
 
-    function deleteCountryHandler(ids){
+    function deleteCountryHandler(ids) {
         dispatch(deleteCountryFromActivity(ids))
     }
 
@@ -25,7 +25,9 @@ export default function Activities() {
                 {allActivities?.map((activity, index) =>
                     <div className={style.activity} key={activity.name}>
                         <div className={style.activityNameContainer}>
-                            <button className={style.editButton}>e</button>
+                            <NavLink className={style.navlink} to={`/form/${activity.id}`}>
+                                <button value={activity.id} className={style.editButton}>e</button>
+                            </NavLink>
                             <p key={activity.name}>{activity.name}</p>
                             <button value={activity.id} onClick={deleteActivityHandler} className={style.deleteButton}>x</button>
                         </div>
@@ -36,7 +38,7 @@ export default function Activities() {
                             <p>Countries</p>
                             {activity?.Countries?.map((country, index) =>
                                 <div key={index} className={style.countryNameContainer}>
-                                    <button onClick={()=>{deleteCountryHandler([country.id, activity.id])}} className={style.x} key={index}>x</button>
+                                    <button onClick={() => { deleteCountryHandler([country.id, activity.id]) }} className={style.x} key={index}>x</button>
                                     <NavLink className={style.navlink} to={`/detail/${country.id}`}>
                                         <p key={country.name}>{country.name}</p>
                                     </NavLink>
