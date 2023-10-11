@@ -7,9 +7,11 @@ export default function Card({ continent, flag, name, id }) {
     return (
         <>
             <div className={style.card}>
-                <h1 className={style.name}>{name}</h1>
+                <div className={style.nameContainer}>
+                    <h1 className={style.name}>{name}</h1>
+                </div>
                 <NavLink to={`/detail/${id}`} >
-                    <div className={style.imgContainer} style={{ backgroundImage: `url(${flag})`}}>
+                    <div className={style.imgContainer} style={{ backgroundImage: `url(${flag})` }}>
                         <div className={style.img}></div>
                     </div>
                 </NavLink>

@@ -16,14 +16,22 @@
     transition-duration: 0.1s;
 }
 
+.nameContainer{
+    width: 19em;
+    border-radius: 20px;
+    background-color: rgba(0, 110, 130, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+}
 
 .name {
-    font-size: 1.6em;
-    height: 50px;
+    font-size: 1.4em;
 }
 
 .continent {
-    font-size: 1.4em;
+    font-style: italic;
+    font-size: 1.2em;
     padding-top: 0.5em;
     padding-bottom: 1em;
 }
