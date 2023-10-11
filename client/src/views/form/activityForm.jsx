@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 //Actions
 import { addActivity, addAllCountries } from "../../Redux/Actions/actions"
@@ -19,6 +19,8 @@ export default function ActivityForm() {
     const dispatch = useDispatch()
 
     const countries = useSelector(state => state?.allCountries)
+
+    const seasons = ['Winter', 'Summer', 'Autumn', 'Spring']
 
 
     //Estado local con los valores que luego seran enviados por body para crear una activity
@@ -132,13 +134,13 @@ export default function ActivityForm() {
                     </div>
                     <div className={style.cuadro}>
                         <label className={style.labels}><p className={style.obligatorios}>*</p>Season</label>
-                        <select onChange={changeHandler} name="season">
-                            <option value=''>Season</option>
-                            <option value='Winter'>Winter</option>
-                            <option value='Autumn'>Autumn</option>
-                            <option value='Summer'>Summer</option>
-                            <option value='Spring'>Spring</option>
-                        </select>
+                        <div className={style.checkbox}>
+                            {seasons.map((season, index)=>
+                            <label key={index}>
+                                <input onChange={changeHandler} key={index} type="radio" name="season" value={season}/>{season}
+                            </label>
+                            )}
+                        </div>
                     </div>
                     <div className={style.cuadro}>
                         <label className={style.labels}><p className={style.obligatorios}>*</p>Country</label>

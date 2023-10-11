@@ -134,7 +134,7 @@ export const registerUser = (user) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post(`/user`, user);
-            alert(`Welcome ${user.email}!!!`)
+            alert(`Welcome ${user.username}!!!`)
             return dispatch({
                 type: REGISTER_USER,
                 payload: {
