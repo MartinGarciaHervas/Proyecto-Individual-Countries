@@ -21,7 +21,9 @@ export default function Activities() {
                 {allActivities?.map((activity, index) =>
                     <div className={style.activity} key={activity.name}>
                         <div className={style.activityNameContainer}>
+                            <button className={style.editButton}>e</button>
                             <p key={activity.name}>{activity.name}</p>
+                            <button className={style.deleteButton}>x</button>
                         </div>
                         <p key={activity.difficulty}>Difficulty: {activity.difficulty}</p>
                         <p key={activity.duration}>Duration: {activity.duration}</p>
