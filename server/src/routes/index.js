@@ -35,6 +35,6 @@ mainRouter.put('/activities', editActivityHandler)
 
 //Delete
 mainRouter.delete('/activities/:ids', deleteCountryFromActivityHandler)
-mainRouter.delete('/activities/:idActivity', deleteActivityHandler)
+mainRouter.delete('/activity/:idActivity', deleteActivityHandler)
 
 module.exports = mainRouter;

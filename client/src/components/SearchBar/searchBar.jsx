@@ -12,7 +12,7 @@ export default function SearchBar() {
 
     const dispatch = useDispatch()
 
-    const [country, setCountry] = useState(null);
+    const [country, setCountry] = useState("");
 
     function changeHandler(event) {
         setCountry(event.target.value)

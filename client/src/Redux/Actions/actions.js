@@ -134,7 +134,7 @@ export const clearDetail = () => {
 export const deleteActivity = (id)=>{
     return async (dispatch)=>{
         try {
-            const {data} = await axios.delete(`/activities/${id}`)
+            const {data} = await axios.delete(`/activity/${id}`)
             alert(data)
             return dispatch({
                 type: DELETE_ACTIVITY,
