@@ -85,22 +85,6 @@ export const getCountryById = (id) => {
     }
 }
 
-export const deleteCountryFromActivity = (ids) => {
-    return async (dispatch) => {
-        try {
-            const response = await axios.get(`/activities/${ids}`)
-            const activitiesResponse = await axios.get('/activities');
-            alert(response.data)
-            return dispatch({
-                type: DELETE_COUNTRY_FROM_ACTIVITY,
-                payload: activitiesResponse.data
-            })
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-}
-
 
 //Post Actions -----------------------------------------------------------------------------------------------------------
 
@@ -158,6 +142,22 @@ export const deleteActivity = (id)=>{
             })
         } catch (error) {
             alert(error.message)
+        }
+    }
+}
+
+export const deleteCountryFromActivity = (ids) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.delete(`/activities/${ids}`)
+            const activitiesResponse = await axios.get('/activities');
+            alert(response.data)
+            return dispatch({
+                type: DELETE_COUNTRY_FROM_ACTIVITY,
+                payload: activitiesResponse.data
+            })
+        } catch (error) {
+            console.log(error.message);
         }
     }
 }

@@ -27,7 +27,6 @@ mainRouter.post('/record', recordHandler)
 mainRouter.get('/countries', getAllCountriesHandler);
 mainRouter.get('/countries/:idPais', getCountryByIdHandler);
 mainRouter.get('/activities', getAllActivitiesHandler);
-mainRouter.get('/activities/:ids', deleteCountryFromActivityHandler)
 mainRouter.get('/user', loginHandler)
 mainRouter.get('/record', getRecordHandler)
 
@@ -35,6 +34,7 @@ mainRouter.get('/record', getRecordHandler)
 mainRouter.put('/activities', editActivityHandler)
 
 //Delete
+mainRouter.delete('/activities/:ids', deleteCountryFromActivityHandler)
 mainRouter.delete('/activities/:idActivity', deleteActivityHandler)
 
 module.exports = mainRouter;
