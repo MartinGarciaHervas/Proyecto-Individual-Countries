@@ -33,7 +33,7 @@ export default function Filters() {
         <div className={style.filtros2}>
             <div className={filterAux ? style.ordenes1 : style.ordenes2}>
                 <div>
-                    <p>By Continent</p>
+                    <p className={style.title}>By Continent</p>
                     <select onChange={filterByContinentHandler}>
                         <option value=''>All</option>
                         <option value='Asia'>Asia</option>
@@ -46,7 +46,7 @@ export default function Filters() {
                     </select>
                 </div>
                 <div>
-                    <p>By Activity</p>
+                    <p className={style.title}>By Activity</p>
                     <select onChange={filterByActivityHandler}>
                         <option value=''>All</option>
                         {[...new Set(activities?.map(activity => activity.name.toUpperCase()))].map(name => (
