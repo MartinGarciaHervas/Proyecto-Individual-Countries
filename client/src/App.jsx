@@ -1,8 +1,11 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 //Router Dom
 import { Routes, Route, useNavigate } from 'react-router-dom'
+
+//Actions
+import { addAllCountries } from './Redux/Actions/actions'
 
 //Views
 import Landing from './views/landing/landingPage'
@@ -21,6 +24,8 @@ import EditActivity from './views/editForm/EditForm'
 
 function App() {
 
+  const dispatch = useDispatch()
+
   const navigate = useNavigate()
 
   const access = useSelector(state => state?.user.access)
@@ -32,6 +37,10 @@ function App() {
       navigate('/')
     }
   },[access])
+
+  useEffect(()=>{
+    dispatch(addAllCountries())
+  },[])
 
   return (
     <>

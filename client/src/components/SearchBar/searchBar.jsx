@@ -12,7 +12,7 @@ export default function SearchBar() {
 
     const dispatch = useDispatch()
 
-    const [country, setCountry] = useState('');
+    const [country, setCountry] = useState(null);
 
     function changeHandler(event) {
         setCountry(event.target.value)
@@ -30,7 +30,11 @@ export default function SearchBar() {
     }
 
     useEffect(()=>{
-        dispatch(getCountryByName(country))
+        if(country === ''){
+            dispatch(addAllCountries())
+        } else {
+            dispatch(getCountryByName(country))
+        }
     },[country])
 
     return (

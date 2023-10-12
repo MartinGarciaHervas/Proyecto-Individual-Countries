@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 
-//Actions
-import { addAllCountries } from "../../Redux/Actions/actions";
-
 //Components
 import Loader from "../Loader/Loader";
 import Cards from "../Cards/cards"
@@ -18,12 +15,6 @@ const COUNTRIES_PER_PAGE = 10
 
 
 export default function Paginado() {
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(addAllCountries())
-    }, [])
 
     const [loading, setLoading] = useState(true)
 

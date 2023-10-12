@@ -10,14 +10,27 @@ import style from './orders.module.css'
 export default function Orders() {
     const dispatch = useDispatch()
 
+    const [order, setOrder] = useState({
+        alphabetic: 'descendente',
+        population: 'ascendente'
+    })
+
     //Orders
 
     function orderByPopulationHandler(event) {
-        dispatch(orderByPopulation(event.target.value))
+        setOrder({
+            ...order,
+            population: event.target.value
+        })
+        dispatch(orderByPopulation(order.population))
     }
 
     function orderByAlphabeticHandler(event) {
-        dispatch(orderByAlphabetic(event.target.value))
+        setOrder({
+            ...order,
+            alphabetic: event.target.value
+        })
+        dispatch(orderByAlphabetic(order.alphabetic))
     }
 
     const [orderAux, setOrderAux] = useState(false)
@@ -33,14 +46,14 @@ export default function Orders() {
             {<div className={orderAux ? style.order2 : style.order3}>
                 <div>
                     <p className={style.titles}>By population</p>
-                    <select onChange={orderByPopulationHandler}>
+                    <select name='population' value={order.population} onChange={orderByPopulationHandler}>
                         <option value='ascendente'>Ascendente</option>
                         <option value='descendente'>Descendente</option>
                     </select>
                 </div>
                 <div>
                     <p className={style.titles}>Alphabetic</p>
-                    <select onChange={orderByAlphabeticHandler}>
+                    <select name='alphabetic' value={order.alphabetic} onChange={orderByAlphabeticHandler}>
                         <option value='ascendente'>Ascendente</option>
                         <option value='descendente'>Descendente</option>
                     </select>

@@ -1,9 +1,9 @@
 .container{
-    padding-top: 50px;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 100px);
     background-image: url(../../assets/481285.jpg);
     background-size: cover;
 }
