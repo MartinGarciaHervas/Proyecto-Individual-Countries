@@ -19,7 +19,7 @@ export default function Detail() {
     const detail = useSelector(state => state.detail);
 
     const deleteHandler = async (event) => {
-        await dispatch(deleteCountryFromActivity([detail?.pais?.id,event.target.value]))
+        await dispatch(deleteCountryFromActivity([detail?.pais?.id, event.target.value]))
         await dispatch(getCountryById(id))
     }
 
@@ -62,31 +62,37 @@ export default function Detail() {
             </div>
             <div className={style.detail}>
                 <div className={style.country} >
-                    <div className={style.countryCar}>
+                    <div className={style.countryImg}>
                         <div className={style.imgContainer} style={{ backgroundImage: `url(${detail?.pais?.flag})` }}>
                             <div className={style.img}></div>
                         </div>
                     </div>
                     <div className={style.countryCar}>
-                        <h1>{detail?.pais?.name}</h1>
-                        <h2>Continent: {detail?.pais?.continent}</h2>
-                        <h2>Capital: {detail?.pais?.capital}</h2>
-                        <h2>Subregion: {detail?.pais?.subregion}</h2>
-                        <h2>Area: {detail?.pais?.area}</h2>
-                        <h2>Population: {detail?.pais?.population}</h2>
-                        <h3>ID: {detail?.pais?.id}</h3>
-                        <h3>Currency: {detail?.pais?.currency !== 'USD' ? <a target="_blank" href={`https://es.investing.com/currencies/usd-${detail?.pais?.currency.toLowerCase()}`}>{detail?.pais?.currency}</a> :
-                            <a target="_blank" href={`https://es.investing.com/currencies/usd-eur`}>{detail?.pais?.currency}</a>}</h3>
-                        <p ><a target="_blank" href={detail?.pais?.map}>Maps</a></p>
+                        <div className={style.name}>
+                            <h1>{detail?.pais?.name}</h1>
+                        </div>
+                        <h2 className={style.secondary}>Continent: {detail?.pais?.continent}</h2>
+                        <h2 className={style.secondary}>Capital: {detail?.pais?.capital}</h2>
+                        <h2 className={style.secondary}>Subregion: {detail?.pais?.subregion}</h2>
+                        <h2 className={style.secondary}>Area: {detail?.pais?.area}</h2>
+                        <h2 className={style.secondary}>Population: {detail?.pais?.population}</h2>
+                        <h3 className={style.secondary}>ID: {detail?.pais?.id}</h3>
+                        <h3 className={style.secondary}>Currency: {detail?.pais?.currency !== 'USD' ? <a className={style.currency} target="_blank" href={`https://es.investing.com/currencies/usd-${detail?.pais?.currency.toLowerCase()}`}>{detail?.pais?.currency}</a> :
+                            <a className={style.currency} target="_blank" href={`https://es.investing.com/currencies/usd-eur`}>{detail?.pais?.currency}</a>}</h3>
+                        <p ><a className={style.currency} target="_blank" href={detail?.pais?.map}>Maps</a></p>
                     </div>
                 </div>
                 {detail?.activities?.length !== 0 && <div className={style.activitiesContainer}>
-                    <p>Activities</p>
+                    <div className={style.activitiesTitle}>
+                        <p>Activities</p>
+                    </div>
                     <div className={style.activities}>
                         {detail?.activities?.map(activity =>
                             <div className={style.activity} key={activity.id}>
-                                <button value={activity.id} onClick={deleteHandler}>x</button>
-                                <p>Name: {activity.name}</p>
+                                <div className={style.activityNameContainer}>
+                                    <p>{activity.name}</p>
+                                    <button className={style.button} value={activity.id} onClick={deleteHandler}>x</button>
+                                </div>
                                 <p>Difficulty: {activity.difficulty}</p>
                                 <p>Duration: {activity.duration}</p>
                                 <p>Season: {activity.season}</p>

@@ -24,10 +24,6 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    background-color: rgba(84, 84, 84, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
 }
 
 .countryCar{
@@ -35,16 +31,26 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 20px;
+    background-color: rgba(0, 110, 130, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 
 .activitiesContainer {
     height: fit-content;
-    width: 450px;
-    background-color: rgba(84, 84, 84, 0.3);
+    width: 50vw;
+}
+
+.activitiesTitle {
+    width: 50vw;
+    height: fit-content;
+    border-radius: 20px;
+    background-color: rgba(0, 110, 130, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
+
 }
 
 .activities {
@@ -55,13 +61,45 @@
 }
 
 .activity {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1.25em;
+    background-color: rgba(84, 84, 84, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.activityNameContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 20px;
+    width: 10em;
+    border-radius: 20px;
+    background-color: rgba(0, 110, 130, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.button{
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.4);
+    width: 25px;
+    height: 50px;
+    border-radius: 0 20px 20px 0;
 }
 
 .time {
     position: absolute;
     display: flex;
     width: 100vw;
+    margin-top: 30px;
 }
 
 .watch {
@@ -83,4 +121,21 @@
     height: 300px;
      border-radius: 50%;
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.769) 70%);
+}
+
+.name {
+    border-radius: 20px;
+    background-color: rgba(0, 110, 130, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.secondary {
+    color: rgb(192, 192, 192);
+    font-style: italic;
+}
+
+.currency {
+    color: rgb(192, 192, 192);
+    font-style: normal;
 }
