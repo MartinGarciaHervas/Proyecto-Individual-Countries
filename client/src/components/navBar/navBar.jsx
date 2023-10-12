@@ -16,13 +16,13 @@ export default function NavBar() {
 
     const dispatch = useDispatch()
 
-    const clickHandler = ()=>{
+    const clickHandler = () => {
         dispatch(logout())
     }
     return (
         <>
             <div className={style.container}>
-            {location.pathname !== '/home' && location.pathname !== '/' && <NavLink to={'/home'}><button>Home</button></NavLink>}
+                {location.pathname !== '/home' && location.pathname !== '/' && <NavLink to={'/home'}><button>Home</button></NavLink>}
                 {location.pathname !== '/form' && location.pathname !== '/' && <NavLink to={'/form'}><button>Create Activity</button></NavLink>}
                 {location.pathname === '/home' && <SearchBar />}
                 {location.pathname !== '/game' && location.pathname !== '/' && <NavLink to={'/game'}><button>Quiz!</button></NavLink>}
