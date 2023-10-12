@@ -1,7 +1,15 @@
 .container{
     position: absolute;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100vw;
     z-index: 100;
+    overflow: hidden;
+}
+
+.routes {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
