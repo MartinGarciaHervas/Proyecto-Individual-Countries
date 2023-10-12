@@ -32,14 +32,14 @@ export default function Orders() {
                 : <button className={style.button} onClick={orderAuxHandler}>Show Orders</button>}
             {<div className={orderAux ? style.order2 : style.order3}>
                 <div>
-                    <p>By population</p>
+                    <p className={style.titles}>By population</p>
                     <select onChange={orderByPopulationHandler}>
                         <option value='ascendente'>Ascendente</option>
                         <option value='descendente'>Descendente</option>
                     </select>
                 </div>
                 <div>
-                    <p>Alphabetic</p>
+                    <p className={style.titles}>Alphabetic</p>
                     <select onChange={orderByAlphabeticHandler}>
                         <option value='ascendente'>Ascendente</option>
                         <option value='descendente'>Descendente</option>
