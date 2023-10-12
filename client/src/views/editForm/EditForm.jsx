@@ -9,28 +9,28 @@ import { addAllCountries, editActivity } from "../../Redux/Actions/actions"
 import style from '../form/form.module.css'
 
 export default function EditActivity() {
-    
+
     const { id } = useParams()
-    
+
     const navigate = useNavigate()
-    
+
     const dispatch = useDispatch()
-    
+
     const countries = useSelector(state => state?.allCountries)
-    
+
     const allActivities = useSelector(state => state.activities)
-    
+
     const activity = allActivities?.filter(activity => activity.id === id)[0]
-    
+
     const seasons = ['Winter', 'Summer', 'Autumn', 'Spring']
-    
+
 
     //Estado local con los valores actuales de la actividad a editar
     const [activityData, setActivityData] = useState({
         id: id,
         name: activity?.name,
         difficulty: activity?.difficulty,
-        duration: activity?.duration.length === 3? activity?.duration.slice(0, 1): activity?.duration.slice(0, 2),
+        duration: activity?.duration.length === 3 ? activity?.duration.slice(0, 1) : activity?.duration.slice(0, 2),
         season: activity?.season,
         CountryId: activity?.Countries?.map(country => country.id),
     })
@@ -53,12 +53,6 @@ export default function EditActivity() {
             ...activityData,
             [event.target.name]: event.target.value,
         })
-
-        //Como solo tengo que validar el atributo name, en el caso de que el value sea name ahi valido
-        if (event.target.name === 'name')
-            setErrors(validar({
-                name: event.target.value,
-            }))
     }
 
 
@@ -122,9 +116,9 @@ export default function EditActivity() {
                     <div className={style.cuadro}>
                         <label className={style.labels}>Season</label>
                         <select name="season" onChange={changeHandler} value={activityData.season}>
-                            {seasons.map(season => 
+                            {seasons.map(season =>
                                 <option key={season} value={season} >{season}</option>
-                                )}
+                            )}
                         </select>
                     </div>
                     <div className={style.cuadro}>

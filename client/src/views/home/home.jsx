@@ -12,7 +12,7 @@ import style from './home.module.css'
 
 export default function Home() {
 
-    const activities = useSelector(state => state?.activities)
+    // const activities = useSelector(state => state?.activities)
 
     const dispatch = useDispatch()
 
@@ -30,22 +30,22 @@ export default function Home() {
 
     //Filters
 
-    function filterByContinentHandler(event) {
-        dispatch(filterByContinent(event.target.value))
-    }
+    // function filterByContinentHandler(event) {
+    //     dispatch(filterByContinent(event.target.value))
+    // }
 
-    function filterByActivityHandler(event) {
-        dispatch(filterByActivity(event.target.value))
-    }
+    // function filterByActivityHandler(event) {
+    //     dispatch(filterByActivity(event.target.value))
+    // }
 
 
     //Funcionalidad para los botones que esconden y muestran los filtros y ordenes
 
-    const [filterAux, setFilterAux] = useState(true)
+    // const [filterAux, setFilterAux] = useState(true)
 
-    function filterAuxHandler() {
-        setFilterAux(filterAux ? false : true)
-    }
+    // function filterAuxHandler() {
+    //     setFilterAux(filterAux ? false : true)
+    // }
 
     const [orderAux, setOrderAux] = useState(false)
 
@@ -77,7 +77,7 @@ export default function Home() {
                             </div>
                         </div>}
                     </div>
-                    <div className={style.filtros2}>
+                    {/* <div className={style.filtros2}>
                         <div className={filterAux ? style.ordenes1 : style.ordenes2}>
                             <div>
                                 <p>By Continent</p>
@@ -104,7 +104,7 @@ export default function Home() {
                         </div>
                         {filterAux?<button onClick={filterAuxHandler} className={style.button}>Show Filters</button>
                         :<button onClick={filterAuxHandler} className={style.button}>Hide Filters</button>}
-                    </div>
+                    </div> */}
                 </div>
                 <Paginado />
             </div>
