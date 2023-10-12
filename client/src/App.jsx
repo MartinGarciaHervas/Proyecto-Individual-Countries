@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 //Router Dom
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 
 //Actions
 import { addAllCountries } from './Redux/Actions/actions'
@@ -23,6 +23,8 @@ import style from './App.module.css'
 import EditActivity from './views/editForm/EditForm'
 
 function App() {
+
+  const location = useLocation()
 
   const dispatch = useDispatch()
 
@@ -45,7 +47,7 @@ function App() {
   return (
     <>
       <div className={style.app}>
-        <NavBar />
+        {location.pathname !== '/' && <NavBar />}
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/home' element={<Home />} />
