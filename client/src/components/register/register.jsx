@@ -49,7 +49,7 @@ export default function Register (){
                 <span className={style.error}>{errors.email}</span>
                 <input autoComplete="off" onChange={changeHandler} name="password" value={user.password} placeholder="password"></input>
                 <span className={style.error}>{errors.password}</span>
-                <button type='submit'>Register</button>
+                {errors.email || errors.password ? <button disabled type='submit'>Register</button>:<button type='submit'>Register</button>}
             </form>
         </div>
     )

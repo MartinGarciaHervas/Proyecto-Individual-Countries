@@ -15,4 +15,16 @@
     height: 17rem;
     background-size: contain;
     background-repeat: no-repeat;
+    padding-bottom: 50px;
+}
+
+.welcome {
+    font-size: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+.subtext {
+    margin: 0;
+    padding-bottom: 40px;
 }

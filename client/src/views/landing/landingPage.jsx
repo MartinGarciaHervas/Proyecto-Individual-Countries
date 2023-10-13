@@ -17,6 +17,10 @@ export default function Landing() {
 
     return (
         <div className={style.container}>
+            <div className={style.textos}>
+                <h1 className={style.welcome}>Welcome!!!!</h1>
+                <p className={style.subtext}>Countries P.I.</p>
+            </div>
             <div className={style.gif}></div>
             {aux?<Login/>
             :
