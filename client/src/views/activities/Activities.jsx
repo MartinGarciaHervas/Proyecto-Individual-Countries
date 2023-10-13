@@ -3,7 +3,7 @@ import style from './activities.module.css'
 import { NavLink } from 'react-router-dom'
 
 //Actions
-import { deleteActivity, deleteCountryFromActivity } from '../../Redux/Actions/actions'
+import { addAllCountries, deleteActivity, deleteCountryFromActivity } from '../../Redux/Actions/actions'
 
 export default function Activities() {
 
@@ -13,6 +13,7 @@ export default function Activities() {
 
     function deleteActivityHandler(event) {
         dispatch(deleteActivity(event.target.value))
+        dispatch(addAllCountries())
     }
 
     function deleteCountryHandler(ids) {
@@ -23,7 +24,7 @@ export default function Activities() {
         <div className={style.container}>
             <div className={style.activitiesContainer}>
                 {allActivities?.map((activity, index) =>
-                    <div className={style.activity} key={activity.name}>
+                    <div className={style.activity} key={index}>
                         <div className={style.activityNameContainer}>
                             <NavLink className={style.navlink} to={`/form/${activity.id}`}>
                                 <button value={activity.id} className={style.editButton}>e</button>
