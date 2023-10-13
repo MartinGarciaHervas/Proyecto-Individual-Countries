@@ -32,8 +32,8 @@ export default function Login() {
     return (
         <div className={style.container}>
             <form className={style.form} onSubmit={submitHandler}>
-                <input autoComplete="off" onChange={changeHandler} name='email' value={user.email} placeholder='Email'></input>
-                <input autoComplete="off" onChange={changeHandler} name='password' value={user.password} type='password' placeholder='Password'></input>
+                <input className={style.input} autoComplete="off" onChange={changeHandler} name='email' value={user.email} placeholder='Email'></input>
+                <input className={style.input} autoComplete="off" onChange={changeHandler} name='password' value={user.password} type='password' placeholder='Password'></input>
                 <button type='submit'>Login</button>
             </form>
         </div>

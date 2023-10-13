@@ -8,10 +8,22 @@
 .form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(84, 84, 84, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    height: 200px;
+    width: 200px;
 }
 
 .error{
     color: red;
+}
+
+.input{
+    border-radius: 5px;
 }

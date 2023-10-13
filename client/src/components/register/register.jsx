@@ -20,7 +20,8 @@ export default function Register (){
         username: ''
     })
     const [errors, setErrors] = useState({
-        email: 'El nombre de usuario no puede estar vacio',
+        username: 'El usuario no puede estar vacio',
+        email: 'El email no puede estar vacio',
         password: 'La contraseña debe tener al menos 1 numero y entre 6 y 10 caracteres'
     })
 
@@ -44,10 +45,11 @@ export default function Register (){
     return (
         <div className={style.container}>
             <form className={style.form} onSubmit={submitHandler}>
-                <input autoComplete='off' onChange={changeHandler} name='username' value={user.username} placeholder='Username'></input>
-                <input autoComplete="off" onChange={changeHandler} name="email" value={user.email} placeholder="Example@gmail.com"></input>
+                <input className={style.input} autoComplete='off' onChange={changeHandler} name='username' value={user.username} placeholder='Username'></input>
+                <span className={style.error}>{errors.username}</span>
+                <input className={style.input} autoComplete="off" onChange={changeHandler} name="email" value={user.email} placeholder="Example@gmail.com"></input>
                 <span className={style.error}>{errors.email}</span>
-                <input autoComplete="off" onChange={changeHandler} name="password" value={user.password} placeholder="password"></input>
+                <input className={style.input} autoComplete="off" onChange={changeHandler} name="password" value={user.password} placeholder="password"></input>
                 <span className={style.error}>{errors.password}</span>
                 {errors.email || errors.password ? <button disabled type='submit'>Register</button>:<button type='submit'>Register</button>}
             </form>

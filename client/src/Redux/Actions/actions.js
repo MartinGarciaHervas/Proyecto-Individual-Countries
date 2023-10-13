@@ -178,7 +178,7 @@ export const registerUser = (user) => {
                 }
             })
         } catch (error) {
-            alert(error.message)
+            alert('Username o Email ya existen!!')
         }
     }
 }
