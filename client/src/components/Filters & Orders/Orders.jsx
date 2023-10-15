@@ -8,6 +8,9 @@ import { orderByPopulation, orderByAlphabetic } from '../../Redux/Actions/action
 import style from './orders.module.css'
 
 export default function Orders() {
+
+    const responsiveWidth = window.innerWidth <= 600;
+
     const dispatch = useDispatch()
 
     const [order, setOrder] = useState({
@@ -40,25 +43,40 @@ export default function Orders() {
     }
 
     return (
-        <div className={style.filtros}>
-            {orderAux ? <button className={style.button} onClick={orderAuxHandler}>Hide Orders</button>
-                : <button className={style.button} onClick={orderAuxHandler}>Show Orders</button>}
-            {<div className={orderAux ? style.order2 : style.order3}>
+        <div>
+            {!responsiveWidth ? <div className={style.filtros}>
+                {orderAux ? <button className={style.button} onClick={orderAuxHandler}>Hide Orders</button>
+                    : <button className={style.button} onClick={orderAuxHandler}>Show Orders</button>}
+                {<div className={orderAux ? style.order2 : style.order3}>
+                    <div>
+                        <p className={style.titles}>By population</p>
+                        <select name='population' value={order.population} onChange={orderByPopulationHandler}>
+                            <option value='ascendente'>Ascendente</option>
+                            <option value='descendente'>Descendente</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p className={style.titles}>Alphabetic</p>
+                        <select name='alphabetic' value={order.alphabetic} onChange={orderByAlphabeticHandler}>
+                            <option value='ascendente'>Ascendente</option>
+                            <option value='descendente'>Descendente</option>
+                        </select>
+                    </div>
+                </div>}
+            </div>
+                :
                 <div>
                     <p className={style.titles}>By population</p>
                     <select name='population' value={order.population} onChange={orderByPopulationHandler}>
                         <option value='ascendente'>Ascendente</option>
                         <option value='descendente'>Descendente</option>
                     </select>
-                </div>
-                <div>
                     <p className={style.titles}>Alphabetic</p>
                     <select name='alphabetic' value={order.alphabetic} onChange={orderByAlphabeticHandler}>
                         <option value='ascendente'>Ascendente</option>
                         <option value='descendente'>Descendente</option>
                     </select>
-                </div>
-            </div>}
+                </div>}
         </div>
     )
 }

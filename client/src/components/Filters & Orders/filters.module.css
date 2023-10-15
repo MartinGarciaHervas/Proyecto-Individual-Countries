@@ -56,3 +56,15 @@
     margin: 0;
 }
 
+.responsiveFilters{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 25vw;
+}
+
+.responsiveFiltersSelect{
+    width: 25vw;
+    display: flex;
+    flex-wrap: wrap;
+}

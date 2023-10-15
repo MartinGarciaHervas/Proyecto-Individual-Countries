@@ -14,10 +14,10 @@
     background-color: rgba(84, 84, 84, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 20px;
-    height: 200px;
-    width: 200px;
+    border-radius: 1.25em;
+    padding: 1.25em;
+    height: 15.625em;
+    width: 12.5em;
 }
 
 .error{
