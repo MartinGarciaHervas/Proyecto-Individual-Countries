@@ -8,7 +8,7 @@ const PORT = process.env.PORT
 const startServer = async () => {
   try {
     await sequelize.sync({ force: false }); // Espera a que la DB se actualice
-    server.listen(PORT, () => {
+    server.listen(PORT, '0.0.0.0', () => {
       console.log(`Server raised in port: ${PORT}`);
     });
     await postCountries()
