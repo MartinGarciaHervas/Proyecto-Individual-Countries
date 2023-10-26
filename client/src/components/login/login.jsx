@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import login from '../firebase/login'
+
 //Actions
 import { loginAction } from '../../Redux/Actions/actions'
 
 //Estilos
 import style from './login.module.css'
+import googleLogin from '../firebase/google'
 
 export default function Login() {
 
@@ -25,7 +28,12 @@ export default function Login() {
 
     function submitHandler(event) {
         event.preventDefault()
-        dispatch(loginAction(user))
+        login(user.email, user.password, dispatch)
+        
+    }
+
+    function googleHandler(){
+        googleLogin(dispatch)
     }
 
 
@@ -36,6 +44,7 @@ export default function Login() {
                 <input className={style.input} autoComplete="off" onChange={changeHandler} name='password' value={user.password} type='password' placeholder='Password'></input>
                 <button type='submit'>Login</button>
             </form>
+            <button onClick={googleHandler}>Login with Google pa</button>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import register from '../firebase/register'
 
 //Actions
 import { registerUser } from '../../Redux/Actions/actions';
@@ -16,11 +17,9 @@ export default function Register (){
 
     const [user, setUser] = useState({
         email: '',
-        password: '',
-        username: ''
+        password: ''
     })
     const [errors, setErrors] = useState({
-        username: 'El usuario no puede estar vacio',
         email: 'El email no puede estar vacio',
         password: 'La contraseña debe tener al menos 1 numero y entre 6 y 10 caracteres'
     })
@@ -38,15 +37,13 @@ export default function Register (){
 
     function submitHandler(event){
         event.preventDefault();
-        dispatch(registerUser(user))
+        register(user.email, user.password)
     }
 
 
     return (
         <div className={style.container}>
             <form className={style.form} onSubmit={submitHandler}>
-                <input className={style.input} autoComplete='off' onChange={changeHandler} name='username' value={user.username} placeholder='Username'></input>
-                <span className={style.error}>{errors.username}</span>
                 <input className={style.input} autoComplete="off" onChange={changeHandler} name="email" value={user.email} placeholder="Example@gmail.com"></input>
                 <span className={style.error}>{errors.email}</span>
                 <input className={style.input} autoComplete="off" onChange={changeHandler} name="password" value={user.password} placeholder="password"></input>

@@ -8,7 +8,7 @@ import { ADD_ACTIVITY, ADD_ALL_COUNTRIES, CLEAR_DETAIL, DELETE_ACTIVITY, FILTER_
 //Filter & Order Actions ----------------------------------------------------------------------------------------
 
 export const orderByAlphabetic = (order) => {
-    return{
+    return {
         type: ORDER_BY_ALPHABETIC,
         payload: order,
     }
@@ -49,7 +49,7 @@ export const addAllCountries = () => {
             const activities = activitiesResponse.data
             return dispatch({
                 type: ADD_ALL_COUNTRIES,
-                payload: {countries, activities, record},
+                payload: { countries, activities, record },
             })
         } catch (error) {
             console.log(error.message);
@@ -117,7 +117,7 @@ export const editActivity = (activity) => {
                 payload: activitiesResponse.data
             })
         } catch (error) {
-            
+
         }
     }
 }
@@ -131,10 +131,10 @@ export const clearDetail = () => {
     }
 }
 
-export const deleteActivity = (id)=>{
-    return async (dispatch)=>{
+export const deleteActivity = (id) => {
+    return async (dispatch) => {
         try {
-            const {data} = await axios.delete(`/activity/${id}`)
+            const { data } = await axios.delete(`/activity/${id}`)
             alert(data)
             return dispatch({
                 type: DELETE_ACTIVITY,
@@ -190,20 +190,9 @@ export const logout = () => {
 }
 
 export const loginAction = (user) => {
-    return async (dispatch) => {
-        try {
-            const {data} = await axios(`/user/?email=${user.email}&password=${user.password}`);
-            data?alert(`Welcome Back ${data[1].username}!!!`):alert(`User not found :(. Register!!`)
-            return dispatch({
-                type: LOGIN_USER,
-                payload: {
-                    ...data[1],
-                    access: data[0]
-                }
-            })
-        } catch (error) {
-            alert(error.message)
-        }
+    return {
+        type: LOGIN_USER,
+        payload: user
     }
 }
 
@@ -212,7 +201,7 @@ export const loginAction = (user) => {
 export const setNewRecord = (score) => {
     return async (dispatch) => {
         try {
-            const {data} = await axios.post('/record', score)
+            const { data } = await axios.post('/record', score)
             return dispatch({
                 type: SET_NEW_RECORD,
                 payload: data

@@ -7,7 +7,6 @@ let intialState = {
     activities: [],
     user: {
         email: '',
-        password: '',
         access: false,
     },
     gameRecord: 0
